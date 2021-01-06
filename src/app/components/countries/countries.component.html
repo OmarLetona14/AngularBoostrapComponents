@@ -1,0 +1,33 @@
+<div class="container p-4">
+    <form action="">
+        <label class="form-label"><i class="fas fa-flag"> Seleccione su pais: <br></i></label>
+        <select class="form-select form-select-lg" aria-label="Default select example" >
+            <option value="1" *ngFor="let country of countries">{{country.name}}</option>
+            <hr>
+        </select>
+    </form>
+</div>
+<div class="container p-4">
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <th scope="col">Country name</th>
+            <th scope="col">Capital</th>
+            <th scope="col">Region</th>
+            <th scope="col">Population</th>
+            <th scope="col">Flag</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let country of countries">
+                <td>{{country.name}}</td>
+                <td>{{country.capital}}</td>
+                <td>{{country.region}}</td>
+                <td>{{country.population}}</td>
+                <td> <img src="{{country.flag}}" width="75px" height="50px" alt=""> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ngx-spinner bdColor = "rgba(250,250,250,0.8)" size = "large" color = "#7dd75c" type = "ball-spin-fade" [fullScreen] = "true">
+    <p style="color: black" > Loading... </p>
+  </ngx-spinner>

@@ -1,16 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import {FormsModule} from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+//Models  
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { FooterPageComponent } from './components/footer-page/footer-page.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { AboutusPageComponent } from './components/aboutus-page/aboutus-page.component';
 import { LoginComponent } from './components/login/login.component';
+import {NgxSpinnerModule} from 'ngx-spinner';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CountriesComponent } from './components/countries/countries.component';
+
+// Services
+import {CountriesServiceService} from './services/countries-service.service';    
+import {InterceptorService} from './services/interceptor.service';
+import {SpinnerService} from './services/spinner.service';  
 
 @NgModule({
   declarations: [
@@ -20,15 +29,22 @@ import { LoginComponent } from './components/login/login.component';
     FooterPageComponent,
     HomePageComponent,
     AboutusPageComponent,
-    LoginComponent
+    LoginComponent,
+    CountriesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    SpinnerService,
+    {provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true},
+    CountriesServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
