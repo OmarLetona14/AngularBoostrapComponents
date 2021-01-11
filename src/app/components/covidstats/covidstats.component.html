@@ -1,0 +1,39 @@
+<div class="container p-4">
+    <h1 class="text-center"><i class="fas fa-virus"></i>  Covid stats worldwide</h1> <hr>
+</div>
+<div class="container p-4">
+    <div class="row">
+        <label for="exampleDataList" class="form-label">Search for country</label>
+            <input class="form-control" list="datalistOptions" name="filterName" [(ngModel)]="filterName" placeholder="Buscar... ">
+            <!--
+            <datalist id="datalistOptions">
+                <option *ngFor="let country of countries" value="{{country.name}}">
+            </datalist>
+            -->
+    </div>
+</div>
+<div class="container p-4">
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <th scope="col">Country</th>
+            <th scope="col">Porcentaje de mortalidad</th>
+            <th scope="col">Porcentaje de recuperacion</th>
+            <th scope="col">Muertes confirmadas para hoy</th>
+            <th scope="col">Casos confirmados para hoy</th>
+            <th scope="col">Última actualización</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let country of countries | countryName:filterName">
+                <td>{{country.name}}</td>
+                <td>{{country.latest_data.calculated.death_rate<=0 ? 'No data provided' : country.latest_data.calculated.death_rate| number}}</td>
+                <td>{{country.latest_data.calculated.recovery_rate<=0 ? 'No data provided' : country.latest_data.calculated.recovery_rate | number}}</td>
+                <td>{{country.today.deaths<=0 ? '0 or no data provided' : country.today.deaths | number}}</td>
+                <td>{{country.today.confirmed<=0 ? '0 or no data provided': country.today.confirmed | number}}</td>
+                <td>{{country.updated_at<=0 ? 'No data provided': country.updated_at | date: 'dd/MM/yyyy hh:mm a'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-fade" [fullScreen] = "true">
+    <p style="color: white" > Loading... </p>
+</ngx-spinner>

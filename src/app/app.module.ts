@@ -19,7 +19,12 @@ import { CountriesComponent } from './components/countries/countries.component';
 // Services
 import {CountriesServiceService} from './services/countries-service.service';    
 import {InterceptorService} from './services/interceptor.service';
-import {SpinnerService} from './services/spinner.service';  
+import {SpinnerService} from './services/spinner.service';
+import {CovidService} from './services/covid.service';
+
+import { CountryNamePipe } from './pipes/country-name.pipe';
+import { SocialbuttonsComponent } from './components/socialbuttons/socialbuttons.component';
+import { CovidstatsComponent } from './components/covidstats/covidstats.component';  
 
 @NgModule({
   declarations: [
@@ -30,7 +35,10 @@ import {SpinnerService} from './services/spinner.service';
     HomePageComponent,
     AboutusPageComponent,
     LoginComponent,
-    CountriesComponent
+    CountriesComponent,
+    CountryNamePipe,
+    SocialbuttonsComponent,
+    CovidstatsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +51,8 @@ import {SpinnerService} from './services/spinner.service';
   providers: [
     SpinnerService,
     {provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true},
-    CountriesServiceService
+    CountriesServiceService,
+    CovidService
   ],
   bootstrap: [AppComponent]
 })

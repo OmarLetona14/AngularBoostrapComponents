@@ -1,11 +1,31 @@
 <div class="container p-4">
     <form action="">
-        <label class="form-label"><i class="fas fa-flag"> Seleccione su pais: <br></i></label>
+        <label class="form-label"><i class="fas fa-flag"></i> Seleccione su pais: <br></label>
         <select class="form-select form-select-lg" aria-label="Default select example" >
             <option value="1" *ngFor="let country of countries">{{country.name}}</option>
             <hr>
         </select>
     </form>
+</div>
+<div class="container p-4">
+    <h1 class="text-center"><i class="fas fa-flag"></i> Countries of the world</h1> <hr>
+</div>
+<div class="container p-4">
+    <div class="row">
+        <div class="col-10">
+            <label for="exampleDataList" class="form-label">Search for country</label>
+            <input class="form-control" list="datalistOptions" name="filterName" [(ngModel)]="filterName" placeholder="Type to search...">
+            <!-- 
+            <datalist id="datalistOptions">
+                <option *ngFor="let country of countries" value="{{country.name}}">
+            </datalist>
+            -->
+        </div>
+        <div class="col-2 text-center">
+            <br>
+            <button class="btn btn-primary btn-lg">Search</button>
+        </div>
+    </div>
 </div>
 <div class="container p-4">
     <table class="table table-striped">
@@ -17,17 +37,25 @@
             <th scope="col">Flag</th>
         </thead>
         <tbody>
-            <tr *ngFor="let country of countries">
-                <td>{{country.name}}</td>
-                <td>{{country.capital}}</td>
-                <td>{{country.region}}</td>
-                <td>{{country.population}}</td>
+            <tr *ngFor="let country of countries | countryName:filterName">
+                <td>{{country.name!='' ? country.name: 'No data provided'}}</td>
+                <td>{{country.capital!= '' ? country.capital: 'No data provided'}}</td>
+                <td>{{country.region!= '' ? country.region:'No data provided'}}</td>
+                <td>{{country.population!= '' ? country.population:'No data provided'}}</td>
                 <td> <img src="{{country.flag}}" width="75px" height="50px" alt=""> </td>
             </tr>
         </tbody>
     </table>
 </div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-fade" [fullScreen] = "true">
+    <p style="color: white" > Loading... </p>
+</ngx-spinner>
+    
+<!--
+<ngx-spinner bdColor = "rgba(255,255,255,0.8)" size = "medium" color = "#000000" 
+type = "square-jelly-box" [fullScreen] = "true"
+ template = "<img style='animation: rotation 2s infinite linear;'' width='125' height='100px' src='../../../assets/no-bg-logo.png'>">
+    <p style="color: black" >Cargando... </p>
+</ngx-spinner>
+-->
 
-<ngx-spinner bdColor = "rgba(250,250,250,0.8)" size = "large" color = "#7dd75c" type = "ball-spin-fade" [fullScreen] = "true">
-    <p style="color: black" > Loading... </p>
-  </ngx-spinner>

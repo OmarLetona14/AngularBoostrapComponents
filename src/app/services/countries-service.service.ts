@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CountriesServiceService {
 
-  baseUrl = environment.baseUrl;
+  baseUrl = environment.baseCountriesUrl;
 
   constructor(private http:HttpClient) { }
 
@@ -15,5 +15,5 @@ export class CountriesServiceService {
     return this.http.get(`${this.baseUrl}/all`);
   }
 
-  
+
 }

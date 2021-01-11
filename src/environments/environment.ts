@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://restcountries.eu/rest/v2'
+  baseCountriesUrl: 'https://restcountries.eu/rest/v2',
+  baseCovidUrl: 'https://corona-api.com'
 };
 
 /*

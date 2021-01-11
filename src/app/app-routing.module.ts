@@ -5,11 +5,12 @@ import {HomePageComponent} from '../app/components/home-page/home-page.component
 import {LoginComponent} from '../app/components/login/login.component';
 import {AboutusPageComponent} from '../app/components/aboutus-page/aboutus-page.component';
 import {CountriesComponent} from '../app/components/countries/countries.component';
+import {CovidstatsComponent} from '../app/components/covidstats/covidstats.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/covidStats',
     pathMatch: 'full'
   },
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path:'countries',
     component:CountriesComponent
+  },
+  {
+    path:'covidStats',
+    component:CovidstatsComponent
   }
 ];
 

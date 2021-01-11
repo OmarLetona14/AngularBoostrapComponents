@@ -10,9 +10,11 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 export class CountriesComponent implements OnInit {
 
   countries:any = [];
+  public filterName = '';
   constructor(private countriesService:CountriesServiceService, private spinnerService:SpinnerService) { }
 
   ngOnInit(): void {
+    this.spinnerService.getSpinner();
     this.countriesService.getCountries().subscribe(
       res =>{
         this.countries = res;
