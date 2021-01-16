@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "proyecto-nuevo-3d5cf": {
+      "hosting": {
+        "boostrap-components": [
+          "proyecto-nuevo-3d5cf"
+        ]
+      }
+    }
+  }
+}

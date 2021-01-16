@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
-import {FormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +24,13 @@ import {CovidService} from './services/covid.service';
 
 import { CountryNamePipe } from './pipes/country-name.pipe';
 import { SocialbuttonsComponent } from './components/socialbuttons/socialbuttons.component';
-import { CovidstatsComponent } from './components/covidstats/covidstats.component';  
+import { CovidstatsComponent } from './components/covidstats/covidstats.component';
+import { PageNotFoundComponentComponent } from './components/page-not-found-component/page-not-found-component.component';
+import { FormvalidatorComponent } from './components/formvalidator/formvalidator.component';  
+import { RouterModule } from '@angular/router';
+import { AngularFirestore} from "@angular/fire/firestore";
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -38,21 +44,27 @@ import { CovidstatsComponent } from './components/covidstats/covidstats.componen
     CountriesComponent,
     CountryNamePipe,
     SocialbuttonsComponent,
-    CovidstatsComponent
+    CovidstatsComponent,
+    PageNotFoundComponentComponent,
+    FormvalidatorComponent
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [
     SpinnerService,
     {provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true},
     CountriesServiceService,
-    CovidService
+    CovidService,
+    AngularFirestore
   ],
   bootstrap: [AppComponent]
 })

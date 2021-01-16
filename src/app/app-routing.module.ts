@@ -6,6 +6,8 @@ import {LoginComponent} from '../app/components/login/login.component';
 import {AboutusPageComponent} from '../app/components/aboutus-page/aboutus-page.component';
 import {CountriesComponent} from '../app/components/countries/countries.component';
 import {CovidstatsComponent} from '../app/components/covidstats/covidstats.component';
+import {PageNotFoundComponentComponent} from "../app/components/page-not-found-component/page-not-found-component.component";
+import {FormvalidatorComponent} from "../app/components/formvalidator/formvalidator.component";
 
 const routes: Routes = [
   {
@@ -32,6 +34,14 @@ const routes: Routes = [
   {
     path:'covidStats',
     component:CovidstatsComponent
+  },
+  {
+    path:'contact',
+    component:FormvalidatorComponent
+  },
+  {
+    path:'**',
+    component:PageNotFoundComponentComponent
   }
 ];
 
