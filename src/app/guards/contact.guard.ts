@@ -14,6 +14,9 @@ export class ContactGuard implements CanDeactivate<FormvalidatorComponent> {
       const email = component.contactForm.get('email').value || 'Sir';
       const alertResult = Swal.fire({
         title: 'Datos no enviados',
+        icon:'warning',
+        html:`<p>Aun no has enviado tus datos,<br>
+        si confirmas se perdera tu progreso, deseas proseguir? </p>`,
         validationMessage:'Tus datos aun no han sido enviados', 
         showCancelButton:true,
         showConfirmButton:true 

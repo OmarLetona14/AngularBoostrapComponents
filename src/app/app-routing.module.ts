@@ -8,6 +8,7 @@ import {CountriesComponent} from '../app/components/countries/countries.componen
 import {CovidstatsComponent} from '../app/components/covidstats/covidstats.component';
 import {PageNotFoundComponentComponent} from "../app/components/page-not-found-component/page-not-found-component.component";
 import {FormvalidatorComponent} from "../app/components/formvalidator/formvalidator.component";
+import {ContactGuard} from "../app/guards/contact.guard";
 
 const routes: Routes = [
   {
@@ -37,7 +38,8 @@ const routes: Routes = [
   },
   {
     path:'contact',
-    component:FormvalidatorComponent
+    component:FormvalidatorComponent,
+    canDeactivate: [ContactGuard]
   },
   {
     path:'**',
