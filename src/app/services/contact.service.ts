@@ -17,7 +17,7 @@ export class ContactService {
    }
 
 
-   async saveContact(contactForm: Contact, callback:Function): Promise<void>{
+   async saveContact(contactForm: Contact): Promise<void>{
     return new Promise( async(resolve, reject) =>{
       try {
         const id =this.afs.createId();

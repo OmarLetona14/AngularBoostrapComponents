@@ -1,4 +1,31 @@
+<style>
+  button:hover{
+    background-color: red;
+  }
+  
+</style>
+
 <form novalidate class="row g-3" (ngSubmit)="onSaveData()" [formGroup]="contactForm">
+  <div class="col-md-6">
+    <label class="form-label"><i class="fas fa-user-circle"></i> Name</label>
+    <input type="text" class="form-control shadow" id="name" placeholder="Name" formControlName="name" [class]="validField('name')" autofocus>
+    <div class="invalid-feedback">
+      <span *ngIf="contactForm.get('name').errors?.required">
+        <strong> Please enter a name.</strong>
+      </span>
+    </div>
+    <hr>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label"><i class="fas fa-address-card"></i> Last name</label>
+    <input type="text" class="form-control shadow" id="last_name" placeholder="Last name" formControlName="last_name" [class]="validField('last_name')">
+    <div class="invalid-feedback">
+      <span *ngIf="contactForm.get('last_name').errors?.required">
+        <strong> Please enter a last name.</strong>
+      </span>
+    </div>
+    <hr>
+  </div>
     <div class="col-md-6">
       <label class="form-label"><i class="fas fa-envelope"></i> Email</label>
       <input type="email" class="form-control shadow" id="email" placeholder="Email" formControlName="email" [class]="validField('email')" autofocus>
@@ -51,7 +78,7 @@
     </div>
     <div class="col-12">
         <hr>
-      <button type="submit" class="btn btn-success btn-lg btn-block shadow" [class]="isValidData()">Send request <i class="fas fa-exclamation-circle" *ngIf="!contactForm.valid"></i> </button>
+      <button type="submit" class="btn btn-success btn-lg btn-block shadow" [ngClass]="isValidData()">Send request <i class="fas fa-exclamation-circle" *ngIf="!contactForm.valid"></i> </button>
     </div>
   </form> 
   <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-fade" [fullScreen] = "true">

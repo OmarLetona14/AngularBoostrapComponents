@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2 >{{currentTitle}}</h2>
+        <hr>
+        <div class="card border-0">
+            <form (ngSubmit)="onSave()" [formGroup]="productForm">
+                <div class="form-group">
+                    <input type="text" name="product_name" id="product_name" formControlName="name"  [class]="validField('name')"  placeholder="Nombre del producto" class="form-control" autofocus>
+                    <div class="invalid-feedback">
+                        <span *ngIf="productForm.get('name').errors?.required">
+                          <strong> Please enter a product name.</strong>
+                        </span>
+                      </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <textarea name="product_detail" formControlName="description"  [class]="validField('description')" 
+                    placeholder="Detalle del producto" class="form-control" id="" cols="30" rows="5">
+                    </textarea>
+                    <div class="invalid-feedback">
+                        <span *ngIf="productForm.get('description').errors?.required">
+                          <strong> Please enter a product description.</strong>
+                        </span>
+                      </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <input type="number" name="price" id="price" formControlName="price"  min="1" step="any"  [class]="validField('price')" placeholder="Precio" class="form-control">
+                    <div class="invalid-feedback">
+                        <span *ngIf="productForm.get('price').errors?.required">
+                          <strong> Please enter a product price.</strong>
+                        </span>
+                      </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <input type="url" name="image_path" id="image_path" formControlName="image_url"  [class]="validField('image_url')" placeholder="Link de la imagen" class="form-control">
+                    <div class="invalid-feedback">
+                        <span *ngIf="productForm.get('image_url').errors?.required">
+                          <strong> Please enter a product image.</strong>
+                        </span>
+                    </div>
+                    <div class="invalid-feedback">
+                        <span *ngIf="productForm.get('image_url').errors?.pattern">
+                          <strong> Please enter a product valid image.</strong>
+                        </span>
+                    </div>
+                </div>
+                <hr>
+                    <div class="form-group">
+                    <img [src]="getCurrentURL()" class="card-img">
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Publicar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-fade" [fullScreen] = "true">
+    <p style="color: white" > Loading... </p>
+</ngx-spinner>

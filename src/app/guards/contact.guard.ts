@@ -25,7 +25,7 @@ export class ContactGuard implements CanDeactivate<FormvalidatorComponent> {
       });
       return alertResult;
     }
-    return false;
+    return true;
   }
  
   

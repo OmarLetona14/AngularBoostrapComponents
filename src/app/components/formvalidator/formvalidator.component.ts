@@ -13,6 +13,7 @@ export class FormvalidatorComponent implements OnInit {
 
   private emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
   public contactForm: FormGroup;  
+  public over:string = '';
 
   constructor(private fb:FormBuilder, private contactService:ContactService, private spinner:SpinnerService) { }
 
@@ -66,6 +67,8 @@ export class FormvalidatorComponent implements OnInit {
   private initForm():void{
     this.contactForm = this.fb.group({
       // Estructura [valor inicial, validaciones  ]
+      name: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       password: ['', [Validators.required]],
       address: ['', [Validators.required]],

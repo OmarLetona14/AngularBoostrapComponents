@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <img src="{{itemValue.image_url}}" class="shadow-lg rounded w-100" alt="">
+        </div>
+        <div class="col-md-6 text-center">
+            <div class="card border-0 w-100" style="margin: 0 0 0 0;">
+                <div class="card-header text-white border-0 text-center rounded bg-dark">
+                    <h2>{{itemValue.name}}</h2>
+                </div>
+                <div class="card-body border-0 rounded" style="background-color:transparent;">
+                    <p>{{itemValue.description}}</p>
+                    <p class="border-bottom"><strong>Precio:</strong>{{itemValue.price}}</p>
+                    <label for="exampleDataList" class="form-label">Seleccione su pais de origen</label>
+                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                    <datalist id="datalistOptions">
+                    <option value="Guatemala">
+                    <option value="El salvador">
+                    <option value="Honduras">
+                    <option value="Nicaragua">
+                    <option value="Otro">
+                    </datalist>
+                    <hr>
+                    <button class="btn btn-primary btn-block">Agregar al carrito</button>
+                    <button class="btn btn-block btn-warning" ><i class="fas fa-trash"></i> Eliminar producto</button>
+                    <button class="btn btn-block btn-success"   ><i class="fas fa-edit"></i> Editar Producto</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

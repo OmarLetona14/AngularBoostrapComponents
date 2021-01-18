@@ -1,0 +1,28 @@
+
+
+<div class="container p-4">
+    <div class="row">
+        <div class="col w-100">
+            <label for="exampleDataList" class="form-label"><strong><i class="fas fa-search"></i> Search for products </strong></label>
+            <input class="form-control" name="filterProduct" [(ngModel)]="filterProduct" placeholder="Type to search...">
+        </div>
+    </div>
+</div>
+<hr>
+<div class="col-md-4 p-2" *ngFor="let product of products$ | async">
+    <div class="card text-center shadow bg-white p-4 rounded" >
+        <div class="card-header bg-dark text-white align-items-center" >
+            <h3>{{product.name}} <button class="btn btn-group btn-warning" (click)="deleteItem(product)"><i class="fas fa-trash"></i></button>
+                <button class="btn btn-group btn-success" (click)="editItem(product)"><i class="fas fa-edit"></i></button></h3>
+        </div>
+        <!-- --> <img src="{{product.image_url}}" class="card-img-top border-0">  
+        <div class="card-body"> 
+            <hr>
+            <strong>Precio: {{currentDenomination}}{{product.price}}</strong>
+            <hr>
+            <p >{{getDescription(product.description)}}</p>
+            <hr>
+            <button class="btn btn-primary btn-lg btn-block" (click)="details(product)"><i class="fas fa-info-circle"></i> Ver detalles</button>
+        </div>
+    </div>
+</div>

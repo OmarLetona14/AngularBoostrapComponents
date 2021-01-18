@@ -31,6 +31,9 @@ import { RouterModule } from '@angular/router';
 import { AngularFirestore} from "@angular/fire/firestore";
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { ProductsComponent } from './components/products/products.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { DetailsProductComponent } from './components/details-product/details-product.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { environment } from 'src/environments/environment';
     SocialbuttonsComponent,
     CovidstatsComponent,
     PageNotFoundComponentComponent,
-    FormvalidatorComponent
+    FormvalidatorComponent,
+    ProductsComponent,
+    EditProductComponent,
+    DetailsProductComponent
   ],
   imports: [
     RouterModule,
