@@ -15,6 +15,7 @@ import {FormvalidatorComponent} from "../app/components/formvalidator/formvalida
 import {ProductsComponent} from '../app/components/products/products.component';
 import {EditProductComponent} from '../app/components/edit-product/edit-product.component';
 import {DetailsProductComponent} from '../app/components/details-product/details-product.component';
+import { MessageComponent } from './components/message/message.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path:'detailProduct',
     component:DetailsProductComponent
+  },
+  {
+    path:'messages',
+    component:MessageComponent
   },
   {
     path:'**',

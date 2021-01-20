@@ -1,0 +1,24 @@
+<div class="container" >
+    <table class="table table-striped table-hover" >
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Password</th>
+                <th scope="col">Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contact of contacts | async">
+                <td>{{contact.email}}</td>
+                <td>{{contact.name != undefined ? contact.name : 'No data provided'}}</td>
+                <td>{{contact.last_name != undefined ? contact.last_name : 'No data provided'}}</td>
+                <td>{{contact.address}}</td>
+                <td>{{contact.password}}</td>
+                <td>{{contact.message}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

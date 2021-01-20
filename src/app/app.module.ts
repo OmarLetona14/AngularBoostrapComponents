@@ -34,6 +34,7 @@ import { environment } from 'src/environments/environment';
 import { ProductsComponent } from './components/products/products.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { DetailsProductComponent } from './components/details-product/details-product.component';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { DetailsProductComponent } from './components/details-product/details-pr
     FormvalidatorComponent,
     ProductsComponent,
     EditProductComponent,
-    DetailsProductComponent
+    DetailsProductComponent,
+    MessageComponent
   ],
   imports: [
     RouterModule,

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import {Contact} from "../model/Contact";
 import { SpinnerService } from './spinner.service';
 
@@ -9,11 +10,12 @@ import { SpinnerService } from './spinner.service';
 })
 export class ContactService {
 
-  contacts:Observable<Contact>;
+  public contacts:Observable<Contact[]>;
   private contactCollection:AngularFirestoreCollection<Contact>;
 
   constructor(private readonly afs: AngularFirestore, private spinner:SpinnerService) {
     this.contactCollection = afs.collection<Contact>('contacts');
+    this.getContacts();
    }
 
 
@@ -29,4 +31,10 @@ export class ContactService {
       }
     });
    }
+
+   private getContacts():void{
+    this.contacts = this.contactCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => a.payload.doc.data() as Contact))
+    );
+  }
 }
