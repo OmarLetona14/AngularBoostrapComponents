@@ -2,6 +2,8 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Product } from 'src/app/model/Product';
 import { ProductsService } from 'src/app/services/products.service';
+import { SpinnerService } from 'src/app/services/spinner.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-products',
@@ -20,7 +22,7 @@ export class ProductsComponent implements OnInit {
     }
   };
 
-  constructor(private router:Router, private productsService:ProductsService) { }
+  constructor(private router:Router, private productsService:ProductsService, private spinner:SpinnerService) { }
 
   ngOnInit(): void {
   }
@@ -38,9 +40,19 @@ export class ProductsComponent implements OnInit {
     this.navigationExtras.state.value = item;
     this.router.navigate(['detailProduct'], this.navigationExtras);
   }
-  deleteItem(item: Product):void{
-    this.navigationExtras.state.value = item;
-    this.router.navigate(['deleteProduct'], this.navigationExtras);
+  async deleteItem(item: Product):Promise<void>{
+    this.spinner.getSpinner();
+    try {
+      await this.productsService.deleteProduct(item.id).then(()=>{
+        this.products$ = this.productsService.products;
+        this.spinner.stopSpinner();
+      });
+    } catch (error) {
+      Swal.fire('Ocurrio un error', `<strong>
+      Ocurrio un error al intentar eliminar el producto <br>
+      por favor, intentelo de nuevo.
+      </strong>`, 'error');
+    }
   }
   editItem(item: Product):void{
     this.navigationExtras.state.value = item;

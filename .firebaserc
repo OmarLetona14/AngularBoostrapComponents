@@ -7,5 +7,8 @@
         ]
       }
     }
+  },
+  "projects": {
+    "default": "proyecto-nuevo-3d5cf"
   }
 }
