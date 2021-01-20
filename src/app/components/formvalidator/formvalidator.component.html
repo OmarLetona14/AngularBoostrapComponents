@@ -1,9 +1,15 @@
 <style>
-  button:hover{
-    background-color: red;
+    
+  .btn:hover {
+    box-shadow: 0 16px 24px 0 rgba(0,0,0,0.2);
+    -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1);
   }
-  
-</style>
+button {
+  transition: transform .2s;
+}
+</style> 
 
 <form novalidate class="row g-3" (ngSubmit)="onSaveData()" [formGroup]="contactForm">
   <div class="col-md-6">
@@ -78,7 +84,8 @@
     </div>
     <div class="col-12">
         <hr>
-      <button type="submit" class="btn btn-success btn-lg btn-block shadow" [ngClass]="isValidData()">Send request <i class="fas fa-exclamation-circle" *ngIf="!contactForm.valid"></i> </button>
+      <button type="submit" class="btn btn-success btn-lg btn-block shadow" [ngClass]="isValidData()">Send request <i class="fas fa-check" *ngIf="contactForm.valid"></i>
+         <i class="fas fa-exclamation-circle" *ngIf="!contactForm.valid"></i> </button>
     </div>
   </form> 
   <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-fade" [fullScreen] = "true">

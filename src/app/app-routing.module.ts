@@ -57,7 +57,7 @@ const routes: Routes = [
     component:EditProductComponent
   },
   {
-    path:'detailProduct',
+    path:'detailProduct/:id',
     component:DetailsProductComponent
   },
   {

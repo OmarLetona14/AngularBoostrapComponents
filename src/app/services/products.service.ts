@@ -41,6 +41,22 @@ export class ProductsService {
      });
    }
 
+    public getOneProduct(id:string):Product { 
+      let p:Product = null;
+     this.products.forEach(element => {
+      console.log(element);
+       element.forEach(e => {
+        if(typeof e != 'undefined'){
+          if(e.id.localeCompare(id)){
+            console.log(e);
+            p =  e;
+          }else{return p;}
+        }else {return p;}
+       });
+     });
+     return p;
+  }
+
    private getProducts():void{
      this.products = this.productsCollection.snapshotChanges().pipe(
        map(actions => actions.map(a => a.payload.doc.data() as Product))

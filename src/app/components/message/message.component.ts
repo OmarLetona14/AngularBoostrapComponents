@@ -10,7 +10,7 @@ export class MessageComponent implements OnInit {
 
   contacts = this.contactService.contacts;
   constructor(private contactService:ContactService) { }
-
+  filterName:string = '';
   ngOnInit(): void {
   }
 

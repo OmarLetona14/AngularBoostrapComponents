@@ -1,5 +1,10 @@
+<style>
+    
+.btn:hover {
+  box-shadow: 0 16px 24px 0 rgba(0,0,0,0.2);
+}
 
-
+</style>  
 <div class="container p-4">
     <div class="row">
         <div class="col w-100">
@@ -15,14 +20,14 @@
             <h3>{{product.name}} <button class="btn btn-group btn-warning" (click)="deleteItem(product)"><i class="fas fa-trash"></i></button>
                 <button class="btn btn-group btn-success" (click)="editItem(product)"><i class="fas fa-edit"></i></button></h3>
         </div>
-        <!-- --> <img src="{{product.image_url}}" class="card-img-top border-0">  
+        <!-- --> <img src="{{product.image_url != null ? product.image_url : noImageURL}}" (click)="details(product)" class="card-img-top border-0">  
         <div class="card-body"> 
             <hr>
             <strong>Precio: {{currentDenomination}}{{product.price}}</strong>
             <hr>
             <p >{{getDescription(product.description)}}</p>
             <hr>
-            <button class="btn btn-primary btn-lg btn-block" (click)="details(product)"><i class="fas fa-info-circle"></i> Ver detalles</button>
+            <button class="btn btn-info btn-lg btn-block" (click)="details(product)"><i class="fas fa-info-circle"></i> Ver detalles</button>
         </div>
     </div>
 </div>
