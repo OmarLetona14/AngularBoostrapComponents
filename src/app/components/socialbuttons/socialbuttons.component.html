@@ -23,11 +23,11 @@ href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: 
   href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: fixed; right: 80px; bottom: 240px; font-size: 25px; background-color: white;color: black;">
     <i class="fab fa-facebook"></i>
   </a>
-  <a href="/editProduct" class="btn btn-lg rounded-circle shadow-lg" *ngIf="this.router.url == '/products' && !verify"
-   style="position: fixed; right: 80px; bottom: 320px; font-size: 25px; background-color: white;color: black;">
+  <a href="/editProduct" class="btn btn-lg rounded-circle shadow-lg" *ngIf="this.router.url == '/products'"
+   style="position: fixed; font-size: 25px; background-color: white;color: black;" [ngStyle]="!verify ? position_web : position_phone">
     <i class="fas fa-plus"></i></a>
-    <a href="/products" class="btn btn-lg rounded-circle shadow-lg" *ngIf="this.router.url.startsWith('/detailProduct') && !verify"
-   style="position: fixed; right: 80px; bottom: 320px; font-size: 25px; background-color: white;color: black;">
+    <a href="/products" class="btn btn-lg rounded-circle shadow-lg" *ngIf="this.router.url.startsWith('/detailProduct')"
+   style="position: fixed;font-size: 25px; background-color: white;color: black;" [ngStyle]="!verify ? position_web : position_phone">
    <i class="fas fa-arrow-left"></i></a>
 
 </div>

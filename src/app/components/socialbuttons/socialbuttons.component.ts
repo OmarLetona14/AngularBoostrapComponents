@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class SocialbuttonsComponent implements OnInit {
 
+  position_web = {'right': '80px', 'bottom': '320px'}
+  position_phone = {'right': '40px', 'bottom': '40px'}
   verify:Boolean = false;
   constructor(public router:Router) { 
     this.isMobile();
