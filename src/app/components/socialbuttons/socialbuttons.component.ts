@@ -8,10 +8,25 @@ import { Router } from '@angular/router';
 })
 export class SocialbuttonsComponent implements OnInit {
 
-  constructor(public router:Router) { }
+  verify:Boolean = false;
+  constructor(public router:Router) { 
+    this.isMobile();
+  }
 
   ngOnInit(): void {
 
+  }
+
+  isMobile(){
+    const userAgent = window.navigator.userAgent;
+    const pLeft = userAgent.indexOf('(');
+    const pRight = userAgent.indexOf(')', pLeft);
+    const os = userAgent.substring(pLeft, pRight);
+    console.log(userAgent);
+    console.log(os);
+    if(os.includes('Android' || 'iPhone' || 'iPad')){
+      this.verify = true;
+    }
   }
 
 }
