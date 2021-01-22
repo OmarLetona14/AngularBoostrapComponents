@@ -33,6 +33,9 @@ export class ContactService {
    }
 
    private getContacts():void{
+     this.contactCollection.snapshotChanges().toPromise().then((results)=>{
+        console.log(results);
+     });
     this.contacts = this.contactCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => a.payload.doc.data() as Contact))
     );

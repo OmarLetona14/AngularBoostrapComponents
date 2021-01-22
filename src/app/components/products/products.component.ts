@@ -41,6 +41,7 @@ export class ProductsComponent implements OnInit {
     this.navigationExtras.state.value = item;
     this.router.navigate(['detailProduct', item.id], this.navigationExtras);
   }
+  
   async deleteItem(item: Product):Promise<void>{
     this.spinner.getSpinner();
     try {

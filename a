@@ -1,0 +1,77 @@
+[33mcommit d2677508a28c5d9f485666f245680e1ac275e476[m[33m ([m[1;36mHEAD -> [m[1;32mpageshosting[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Wed Jan 20 12:12:43 2021 -0600
+
+    Added animations
+
+[33mcommit b2d3791555e42e6b94ae841166cf2bcfae9b8e47[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Tue Jan 19 21:29:21 2021 -0600
+
+    Added message table
+
+[33mcommit 028bbb194044e1d3864c3d72d12441b5c6f40976[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Tue Jan 19 20:37:37 2021 -0600
+
+    Modificated angular project budgets
+
+[33mcommit 1e11da0f0d7138ba05f4aea819202ed4bba7f83c[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Tue Jan 19 20:24:56 2021 -0600
+
+    Added functions
+
+[33mcommit 3dcba2cd9d2260aeb53704edaa4477e848a75c54[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Sun Jan 17 20:33:14 2021 -0600
+
+    Added products CRUD
+
+[33mcommit e5b61f956274d0e8d284fd0a364b10c02392408e[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Sat Jan 16 12:03:34 2021 -0600
+
+    Added guard and promise handler to contact data
+
+[33mcommit 7348a2cdd52488dafbffb0b5aae7491844d40cff[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Sat Jan 16 11:26:20 2021 -0600
+
+    Added contact form
+
+[33mcommit 26d7785d18d53e5ab18b364df209da0ef54696e6[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Sun Jan 10 19:28:41 2021 -0600
+
+    Added covidstats component
+
+[33mcommit 386c1906f71acf4172736693f77d908f47408d95[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Wed Jan 6 16:34:06 2021 -0600
+
+    Addded ngx-spinner on http request
+
+[33mcommit 56200e59a24f7495e6382fc922fbbf52c26c42f4[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Sat Nov 28 23:52:21 2020 -0600
+
+    Added express dependecy
+
+[33mcommit ca8fde9c0c8185626f4d547b67420c4965a2db88[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Sat Nov 28 22:16:08 2020 -0600
+
+    Added heroku configurations
+
+[33mcommit ab63343e75072ec31c3e7bd3cda05def6d998542[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Thu Nov 26 13:12:34 2020 -0600
+
+    Initial commit
+
+[33mcommit 0ec4db6d133ccd699a2435d7dc8d4d43531ae022[m
+Author: Omar Letona <omarletonaf@gmail.com>
+Date:   Wed Nov 25 13:28:22 2020 -0600
+
+    initial commit

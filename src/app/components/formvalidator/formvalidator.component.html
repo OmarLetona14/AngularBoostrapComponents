@@ -1,52 +1,86 @@
 <style>
-    
+
+  i:hover {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  } 
   .btn:hover {
-    box-shadow: 0 16px 24px 0 rgba(0,0,0,0.2);
-    -ms-transform: scale(1.1); /* IE 9 */
-  -webkit-transform: scale(1.1); /* Safari 3-8 */
-  transform: scale(1.1);
+    animation: shake_btn 0.5s;
   }
-button {
-  transition: transform .2s;
+  button {
+    transition: transform .2s;
+  }
+
+  @keyframes shake_btn {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 </style> 
 
 <form novalidate class="row g-3" (ngSubmit)="onSaveData()" [formGroup]="contactForm">
   <div class="col-md-6">
-    <label class="form-label"><i class="fas fa-user-circle"></i> Name</label>
+    <label class="form-label"><i class="fas fa-user-circle"></i> Nombre(s)</label>
     <input type="text" class="form-control shadow" id="name" placeholder="Name" formControlName="name" [class]="validField('name')" autofocus>
     <div class="invalid-feedback">
       <span *ngIf="contactForm.get('name').errors?.required">
-        <strong> Please enter a name.</strong>
+        <strong>Por favor, introduzca un nombre.</strong>
       </span>
     </div>
     <hr>
   </div>
   <div class="col-md-6">
-    <label class="form-label"><i class="fas fa-address-card"></i> Last name</label>
+    <label class="form-label"><i class="fas fa-address-card"></i> Apellido(s)</label>
     <input type="text" class="form-control shadow" id="last_name" placeholder="Last name" formControlName="last_name" [class]="validField('last_name')">
     <div class="invalid-feedback">
       <span *ngIf="contactForm.get('last_name').errors?.required">
-        <strong> Please enter a last name.</strong>
+        <strong>Por favor, introduzca un apellido.</strong>
       </span>
     </div>
     <hr>
   </div>
     <div class="col-md-6">
-      <label class="form-label"><i class="fas fa-envelope"></i> Email</label>
+      <label class="form-label"><i class="fas fa-envelope"></i> Correo electronico</label>
       <input type="email" class="form-control shadow" id="email" placeholder="Email" formControlName="email" [class]="validField('email')" autofocus>
       <div class="invalid-feedback">
         <span *ngIf="contactForm.get('email').errors?.required">
-          <strong> Please enter an email.</strong>
+          <strong>Por favor, introduzca un correo electronico.</strong>
         </span>
         <span *ngIf="contactForm.get('email').errors?.pattern">
-          <strong> Please enter a valid email.</strong>
+          <strong>Correo electronico no valido.</strong>
         </span>
       </div>
       <hr>
     </div>
     <div class="col-md-6">
-      <label class="form-label"><i class="fas fa-unlock-alt"></i> Password</label>
+      <label class="form-label"><i class="fas fa-unlock-alt"></i> Contrasenia</label>
       <input type="password" class="form-control shadow" id="password" placeholder="Password" formControlName="password" [class]="validField('password')">
       <div class="invalid-feedback">
         <span *ngIf="contactForm.get('password').errors?.required">
@@ -57,34 +91,34 @@ button {
     </div>
     
     <div class="col-12">
-      <label class="form-label"><i class="fas fa-map-marker-alt"></i> Address</label>
+      <label class="form-label"><i class="fas fa-map-marker-alt"></i> Direccion </label>
       <input type="text" class="form-control shadow" id="address" placeholder="Address" formControlName="address" [class]="validField('address')">
       <div class="invalid-feedback">
         <span *ngIf="contactForm.get('address').errors?.required">
-          <strong> Please enter an address.</strong>
+          <strong>Por favor, introduzca una direccion.</strong>
         </span>
       </div>
       <hr>
     </div>
     <div class="col-md-12">
-      <label class="form-label"><i class="far fa-comment-dots"></i> Message</label>
+      <label class="form-label"><i class="far fa-comment-dots"></i> Mensaje</label>
       <textarea id="message" cols="30" rows="5" class="form-control shadow" placeholder="Write message..." formControlName="message" [class]="validField('message')">
       </textarea>
       <div class="invalid-feedback">
         <span *ngIf="contactForm.get('message').errors?.required">
-          <strong> Please enter a message</strong>
+          <strong>Por favor, introduzca un mensaje</strong>
         </span>
         <span *ngIf="contactForm.get('message').errors?.maxlength">
-          <strong> Your message cannot be longer than 150 characters. </strong>
+          <strong> Su mensaje no puede ser mayor de 150 caracteres. </strong>
         </span>
         <span *ngIf="contactForm.get('message').errors?.minlength">
-          <strong> Your message cannot be smaller than 10 characters. </strong>
+          <strong> Su mensaje no puede ser menor de 5 caracteres. </strong>
         </span>
       </div>
     </div>
     <div class="col-12">
         <hr>
-      <button type="submit" class="btn btn-success btn-lg btn-block shadow" [ngClass]="isValidData()">Send request <i class="fas fa-check" *ngIf="contactForm.valid"></i>
+      <button type="submit" class="btn btn-success btn-lg btn-block shadow" [ngClass]="isValidData()">Mandar mensaje <i class="fas fa-check" *ngIf="contactForm.valid"></i>
          <i class="fas fa-exclamation-circle" *ngIf="!contactForm.valid"></i> </button>
     </div>
   </form> 
