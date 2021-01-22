@@ -29,7 +29,7 @@
     </div>
 </div>
 <hr>
-<div class="col-md-4 p-2" *ngFor="let product of products">
+<div class="col-md-4 p-2" *ngFor="let product of products | countryName:filterProduct">
     <div class="card text-center shadow bg-white p-4 rounded" >
         <div class="card-header bg-dark text-white align-items-center" >
             <h3>{{product.name}} <button class="btn btn-group btn-warning" (click)="deleteItem(product)"><i class="fas fa-trash"></i></button>
