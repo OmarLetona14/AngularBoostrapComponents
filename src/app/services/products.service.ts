@@ -3,18 +3,18 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Product } from '../model/Product';
+import { SpinnerService } from './spinner.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  products: Observable<Product[]>;
+  countries:any = new Array();
   private productsCollection:AngularFirestoreCollection<Product>;
 
-  constructor(private readonly afs:AngularFirestore) {
+  constructor(private readonly afs:AngularFirestore, private spinner:SpinnerService) {
     this.productsCollection =  this.afs.collection<Product>('products');
-    this.getProducts();
    }
 
    async saveProduct(product:Product, productId:string):Promise<void>{
@@ -41,26 +41,12 @@ export class ProductsService {
      });
    }
 
-    public getOneProduct(id:string):Product { 
-      let p:Product = null;
-     this.products.forEach(element => {
-      console.log(element);
-       element.forEach(e => {
-        if(typeof e != 'undefined'){
-          if(e.id.localeCompare(id)){
-            console.log(e);
-            p =  e;
-          }else{return p;}
-        }else {return p;}
-       });
-     });
-     return p;
-  }
-
-   private getProducts():void{
-     this.products = this.productsCollection.snapshotChanges().pipe(
+   public getProducts():Promise<any>{
+    
+    return this.productsCollection.get().toPromise();
+     /*this.products = this.productsCollection.snapshotChanges().pipe(
        map(actions => actions.map(a => a.payload.doc.data() as Product))
-     );
+     );*/
    }
 
 }

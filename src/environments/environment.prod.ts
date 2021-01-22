@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
   baseCountriesUrl: 'https://restcountries.eu/rest/v2',
+  baseCurrencyUrl: `https://free.currconv.com/api/v7/`,
   baseCovidUrl: 'https://corona-api.com',
   firebaseConfig: {
     apiKey: "AIzaSyD-RHZ5g1iC1663MCZ_2BgMPZ8sdiPFUpo",

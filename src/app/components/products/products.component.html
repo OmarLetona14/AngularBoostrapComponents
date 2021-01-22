@@ -29,7 +29,7 @@
     </div>
 </div>
 <hr>
-<div class="col-md-4 p-2" *ngFor="let product of products$ | async">
+<div class="col-md-4 p-2" *ngFor="let product of products">
     <div class="card text-center shadow bg-white p-4 rounded" >
         <div class="card-header bg-dark text-white align-items-center" >
             <h3>{{product.name}} <button class="btn btn-group btn-warning" (click)="deleteItem(product)"><i class="fas fa-trash"></i></button>
@@ -38,7 +38,7 @@
         <!-- --> <img src="{{product.image_url != null ? product.image_url : noImageURL}}" (click)="details(product)" class="card-img-top border-0">  
         <div class="card-body"> 
             <hr>
-            <strong>Precio: {{currentDenomination}}{{product.price}}</strong>
+            <strong>Precio: USD {{product.price}}</strong>
             <hr>
             <p >{{getDescription(product.description)}}</p>
             <hr>

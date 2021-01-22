@@ -21,16 +21,15 @@
                 </div>
                 <div class="card-body border-0 rounded" style="background-color:transparent;">
                     <p>{{itemValue != null ? itemValue.description : 'No data'}}</p>
-                    <p class="border-bottom"><strong>Precio:</strong>{{itemValue != null ? itemValue.price : 'No data'}}</p>
+                    <p><strong>Precio unitario: </strong>{{currency != '' && itemValue != null ? currency : 'USD'}} {{itemValue != null ? itemValue.price : 'No data'}}</p>
+                    <small><strong>** No incluye el envio **</strong></small>
+                    <hr>
+
                     <label for="exampleDataList" class="form-label">Seleccione su pais de origen</label>
-                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-                    <datalist id="datalistOptions">
-                    <option value="Guatemala">
-                    <option value="El salvador">
-                    <option value="Honduras">
-                    <option value="Nicaragua">
-                    <option value="Otro">
-                    </datalist>
+                    <select class="form-control" name="countryPrice" id="countryPrice" [(ngModel)]="country" (ngModelChange)="calcPrice()">
+                        <option value="{{c.name}}" *ngFor="let c of countries">{{c.name}}</option> 
+                    </select>
+                    <small><strong>** El precio varia por la moneda local **</strong></small>
                     <hr>
                     <button class="btn btn-primary btn-block">Agregar al carrito</button>
                 </div>

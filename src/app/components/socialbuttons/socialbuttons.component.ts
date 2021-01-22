@@ -24,8 +24,6 @@ export class SocialbuttonsComponent implements OnInit {
     const pLeft = userAgent.indexOf('(');
     const pRight = userAgent.indexOf(')', pLeft);
     const os = userAgent.substring(pLeft, pRight);
-    console.log(userAgent);
-    console.log(os);
     if(os.includes('Android' || 'iPhone' || 'iPad')){
       this.verify = true;
     }
