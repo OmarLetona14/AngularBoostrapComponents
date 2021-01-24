@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CountriesServiceService } from 'src/app/services/countries-service.service';
+import { CurrencyService } from 'src/app/services/currency.service';
 import { SpinnerService } from 'src/app/services/spinner.service';
+import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -13,38 +15,36 @@ export class RegisterComponent implements OnInit {
 
   private emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
   public registerForm: FormGroup;  
-  public over:string = '';
   passwordType:string = 'password'
   country:string =''
   countries:any = []
-  constructor(private countryService:CountriesServiceService, private fb:FormBuilder, private spinner:SpinnerService) { }
+  constructor(private countryService:CountriesServiceService, private fb:FormBuilder, private spinner:SpinnerService,
+    private userService:UserService) { }
 
   ngOnInit(): void {
     this.initForm();
-    this.spinner.getSpinner();
-    this.countryService.getCountries().subscribe(
-      res=>{this.countries = res
-      this.spinner.stopSpinner()},
-      err=>{console.error(err)}
-    );
+    this.getAllCountries();
   }
+
   async onSaveData():Promise<void>{
     if (this.registerForm.valid){
       const formValues = this.registerForm.value;
       try {
-        
+        this.spinner.getSpinner();
+        await this.userService.saveUser(formValues,null).then(()=>{
+          this.spinner.stopSpinner();
+        });   
+        Swal.fire('Registro exitoso', `<strong>
+        Sus datos han sido guardados, <br>
+        hemos enviado un correo de verificacion a su bandeja de entrada.
+        </strong>`, 'success');
+        this.registerForm.reset();
       } catch (error) {
         Swal.fire('Ocurrio un error', `<strong>
       Ocurrio un error al intentar enviar su mensaje <br>
       por favor, intentelo de nuevo.
       </strong>`, 'error');
       }
-      
-      Swal.fire('Mensaje enviado', `<strong>
-      Su mensaje ha sido enviado, <br>
-      pronto nos pondremos en contacto
-      con usted.</strong>`, 'success');
-      this.registerForm.reset();
     }
     else{
       Swal.fire('Campos incorrectos', `<strong>
@@ -72,8 +72,11 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       // Estructura [valor inicial, validaciones  ]
       name: ['', [Validators.required]],
+      lastname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       password: ['', [Validators.required]],
+      country: ['', [Validators.required]],
+      address: ['', [Validators.required]],
     });
   }
 
@@ -84,6 +87,16 @@ export class RegisterComponent implements OnInit {
       this.passwordType = 'text'
     }
   }
+
+  getAllCountries(){
+    this.spinner.getSpinner();
+    this.countryService.getCountries().subscribe(
+      res=>{this.countries = res
+      this.spinner.stopSpinner()},
+      err=>{console.error(err)}
+    );
+  }
+
 
 
 }

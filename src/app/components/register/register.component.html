@@ -11,7 +11,7 @@
         </div>
         <div class="col">
             <label class="form-label"><i class="fas fa-address-card"></i> Apellido(s) </label>
-            <input type="text" class="form-control shadow-lg rounded-pill" id="last_name" placeholder="Last name" formControlName="last_name" [class]="validField('last_name')">
+            <input type="text" class="form-control shadow-lg rounded-pill" id="last_name" placeholder="Last name" formControlName="lastname" [class]="validField('last_name')">
         </div>
     </div>
     <div class="form-row mt-3">
@@ -28,6 +28,16 @@
             </div>
         </div>
         <div class="col">
+            <label class="form-label"><i class="fas fa-map-marker-alt"></i> Direccion <small style="color:red">*</small></label>
+             <input type="text" class="form-control shadow-lg rounded-pill" id="address" placeholder="Address" formControlName="address" [class]="validField('address')">                <div class="invalid-feedback">
+                <span *ngIf="registerForm.get('address').errors?.required">
+                    <strong>Por favor, introduzca una direccion.</strong>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-row mt-3">
+        <div class="col">
             <label class="form-label"><i class="fas fa-unlock-alt"></i> Contrasenia <small style="color:red">*</small></label>
             <input [type]="passwordType" class="form-control shadow-lg rounded-pill" id="password" placeholder="Password" formControlName="password" [class]="validField('password')">
             <a class="btn btn-outline rounded-pill border-0 float-right" style="background-color: transparent;"
@@ -37,28 +47,24 @@
             </a>
             <div class="invalid-feedback">
                 <span *ngIf="registerForm.get('password').errors?.required">
-                <strong> Please enter a password.</strong>
+                <strong> Por favor, proporcione una contraseña</strong>
                 </span>
             </div>
-            
         </div>
     </div>
     <div class="form-row mt-3">
-        <label class="form-label" for="country"><i class="fas fa-globe-americas"></i> Pais</label>
-        <select class="form-control shadow-lg rounded-pill" name="country" id="country" [(ngModel)]="country">
+        <label class="form-label" for="country"><i class="fas fa-globe-americas"></i> Pais <small style="color:red">*</small></label>
+        <select class="form-control shadow-lg" name="country" id="country" formControlName="country" >
             <option value="{{c.name}}" *ngFor="let c of countries">{{c.name}}</option> 
         </select>
+        <div class="invalid-feedback">
+            <span *ngIf="registerForm.get('country').errors?.required">
+                <strong> Por favor, introduzca un pais.</strong>
+            </span>
+        </div>
     </div>
     <div class="form-row mt-3">
-        <div class="col">
-            <label class="form-label"><i class="fas fa-map-marker-alt"></i> Direccion <small style="color:red">*</small></label>
-            <input type="text" class="form-control shadow-lg rounded-pill" id="address" placeholder="Address" formControlName="Direccion" [class]="validField('address')">
-            <div class="invalid-feedback">
-                <span *ngIf="registerForm.get('address').errors?.required">
-                <strong>Por favor, introduzca una direccion.</strong>
-                </span>
-            </div>
-        </div>
+        
     </div>
     <hr>
     <div class="form-row mt-3">

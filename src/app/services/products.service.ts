@@ -42,11 +42,7 @@ export class ProductsService {
    }
 
    public getProducts():Promise<any>{
-    
     return this.productsCollection.get().toPromise();
-     /*this.products = this.productsCollection.snapshotChanges().pipe(
-       map(actions => actions.map(a => a.payload.doc.data() as Product))
-     );*/
    }
 
 

@@ -24,19 +24,17 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid){
       const formValues = this.loginForm.value;
       try {
-     
+        Swal.fire('Mensaje enviado', `<strong>
+        Su mensaje ha sido enviado, <br>
+        pronto nos pondremos en contacto
+        con usted.</strong>`, 'success');
+        this.loginForm.reset();
       } catch (error) {
         Swal.fire('Ocurrio un error', `<strong>
       Ocurrio un error al intentar enviar su mensaje <br>
       por favor, intentelo de nuevo.
       </strong>`, 'error');
       }
-      
-      Swal.fire('Mensaje enviado', `<strong>
-      Su mensaje ha sido enviado, <br>
-      pronto nos pondremos en contacto
-      con usted.</strong>`, 'success');
-      this.loginForm.reset();
     }
     else{
       Swal.fire('Campos incorrectos', `<strong>
