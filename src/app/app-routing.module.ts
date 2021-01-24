@@ -16,6 +16,7 @@ import {ProductsComponent} from '../app/components/products/products.component';
 import {EditProductComponent} from '../app/components/edit-product/edit-product.component';
 import {DetailsProductComponent} from '../app/components/details-product/details-product.component';
 import { MessageComponent } from './components/message/message.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path:'messages',
     component:MessageComponent
+  },
+  {
+    path:'register',
+    component:RegisterComponent
   },
   {
     path:'**',

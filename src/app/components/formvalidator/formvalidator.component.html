@@ -46,26 +46,6 @@
 </style> 
 
 <form novalidate class="row g-3" (ngSubmit)="onSaveData()" [formGroup]="contactForm">
-  <div class="col-md-6">
-    <label class="form-label"><i class="fas fa-user-circle"></i> Nombre(s)</label>
-    <input type="text" class="form-control shadow" id="name" placeholder="Name" formControlName="name" [class]="validField('name')" autofocus>
-    <div class="invalid-feedback">
-      <span *ngIf="contactForm.get('name').errors?.required">
-        <strong>Por favor, introduzca un nombre.</strong>
-      </span>
-    </div>
-    <hr>
-  </div>
-  <div class="col-md-6">
-    <label class="form-label"><i class="fas fa-address-card"></i> Apellido(s)</label>
-    <input type="text" class="form-control shadow" id="last_name" placeholder="Last name" formControlName="last_name" [class]="validField('last_name')">
-    <div class="invalid-feedback">
-      <span *ngIf="contactForm.get('last_name').errors?.required">
-        <strong>Por favor, introduzca un apellido.</strong>
-      </span>
-    </div>
-    <hr>
-  </div>
     <div class="col-md-6">
       <label class="form-label"><i class="fas fa-envelope"></i> Correo electronico</label>
       <input type="email" class="form-control shadow" id="email" placeholder="Email" formControlName="email" [class]="validField('email')" autofocus>
@@ -89,7 +69,6 @@
       </div>
       <hr>
     </div>
-    
     <div class="col-12">
       <label class="form-label"><i class="fas fa-map-marker-alt"></i> Direccion </label>
       <input type="text" class="form-control shadow" id="address" placeholder="Address" formControlName="address" [class]="validField('address')">
@@ -119,9 +98,10 @@
     <div class="col-12">
         <hr>
       <button type="submit" class="btn btn-success btn-lg btn-block shadow" [ngClass]="isValidData()">Mandar mensaje <i class="fas fa-check" *ngIf="contactForm.valid"></i>
-         <i class="fas fa-exclamation-circle" *ngIf="!contactForm.valid"></i> </button>
+         <i class="fas fa-exclamation-circle" *ngIf="!contactForm.valid"></i> 
+      </button>
     </div>
   </form> 
-  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-fade" [fullScreen] = "true">
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-fade" [fullScreen] = "true">
     <p style="color: white" > Loading... </p>
 </ngx-spinner>

@@ -8,6 +8,7 @@
     "strict": true,
     "noImplicitReturns": false,
     "noImplicitAny": false,
+    "allowSyntheticDefaultImports":true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,

@@ -1,0 +1,75 @@
+<form novalidation (ngSubmit)="onSaveData()" [formGroup]="registerForm">
+    <div class="form-row">
+        <div class="col">
+            <label class="form-label"><i class="fas fa-user-circle"></i> Nombre(s) <small style="color:red">*</small></label>
+            <input type="text" class="form-control shadow-lg rounded-pill" id="name" placeholder="Name" formControlName="name" [class]="validField('name')">
+            <div class="invalid-feedback">
+            <span *ngIf="registerForm.get('name').errors?.required">
+                <strong>Por favor, introduzca un nombre.</strong>
+            </span>
+            </div>
+        </div>
+        <div class="col">
+            <label class="form-label"><i class="fas fa-address-card"></i> Apellido(s) </label>
+            <input type="text" class="form-control shadow-lg rounded-pill" id="last_name" placeholder="Last name" formControlName="last_name" [class]="validField('last_name')">
+        </div>
+    </div>
+    <div class="form-row mt-3">
+        <div class="col">
+            <label class="form-label"><i class="fas fa-envelope"></i> Correo electronico <small style="color:red">*</small></label>
+            <input type="email" class="form-control shadow-lg rounded-pill" id="email" placeholder="Email" formControlName="email" [class]="validField('email')">
+            <div class="invalid-feedback">
+                <span *ngIf="registerForm.get('email').errors?.required">
+                    <strong>Por favor, introduzca un correo electronico.</strong>
+                </span>
+                <span *ngIf="registerForm.get('email').errors?.pattern">
+                    <strong>Correo electronico no valido.</strong>
+                </span>
+            </div>
+        </div>
+        <div class="col">
+            <label class="form-label"><i class="fas fa-unlock-alt"></i> Contrasenia <small style="color:red">*</small></label>
+            <input [type]="passwordType" class="form-control shadow-lg rounded-pill" id="password" placeholder="Password" formControlName="password" [class]="validField('password')">
+            <a class="btn btn-outline rounded-pill border-0 float-right" style="background-color: transparent;"
+             (click)="registerForm.get('password').value != '' ? showPassword() : ''">
+                <div class="text-center" *ngIf="passwordType == 'password'">Mostrar contraseña <i class="far fa-eye"></i></div>
+                <div class="text-center" *ngIf="passwordType == 'text'">Ocultar contraseña <i class="far fa-eye-slash"></i></div>
+            </a>
+            <div class="invalid-feedback">
+                <span *ngIf="registerForm.get('password').errors?.required">
+                <strong> Please enter a password.</strong>
+                </span>
+            </div>
+            
+        </div>
+    </div>
+    <div class="form-row mt-3">
+        <label class="form-label" for="country"><i class="fas fa-globe-americas"></i> Pais</label>
+        <select class="form-control shadow-lg rounded-pill" name="country" id="country" [(ngModel)]="country">
+            <option value="{{c.name}}" *ngFor="let c of countries">{{c.name}}</option> 
+        </select>
+    </div>
+    <div class="form-row mt-3">
+        <div class="col">
+            <label class="form-label"><i class="fas fa-map-marker-alt"></i> Direccion <small style="color:red">*</small></label>
+            <input type="text" class="form-control shadow-lg rounded-pill" id="address" placeholder="Address" formControlName="Direccion" [class]="validField('address')">
+            <div class="invalid-feedback">
+                <span *ngIf="registerForm.get('address').errors?.required">
+                <strong>Por favor, introduzca una direccion.</strong>
+                </span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="form-row mt-3">
+        <button type="submit" class="btn btn-info btn-block btn-lg shadow-lg rounded-pill" [ngClass]="isValidData()">
+            Registrarse 
+            <i class="fas fa-chevron-circle-right" *ngIf="registerForm.valid"></i>
+            <i class="fas fa-times" *ngIf="!registerForm.valid"></i>
+        </button>
+    </div>
+</form>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-fade" [fullScreen] = "true">
+    <p style="color: white" > Loading... </p>
+</ngx-spinner>

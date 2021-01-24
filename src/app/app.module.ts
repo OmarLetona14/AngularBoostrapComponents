@@ -35,6 +35,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { DetailsProductComponent } from './components/details-product/details-product.component';
 import { MessageComponent } from './components/message/message.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MessageComponent } from './components/message/message.component';
     ProductsComponent,
     EditProductComponent,
     DetailsProductComponent,
-    MessageComponent
+    MessageComponent,
+    RegisterComponent
   ],
   imports: [
     RouterModule,

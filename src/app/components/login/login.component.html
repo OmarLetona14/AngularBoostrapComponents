@@ -1,54 +1,51 @@
-<style>
-    .btn:hover {
-        animation: shake_btn 0.5s;
-        box-shadow: 0 16px 24px 0 rgba(0,0,0,0.2);  
-        border-color: darkgoldenrod;
-        border-width: 3px;
-    }
-    @keyframes shake_btn {
-        0% { transform: translate(1px, 1px) rotate(0deg); }
-        10% { transform: translate(-1px, -2px) rotate(-1deg); }
-        20% { transform: translate(-3px, 0px) rotate(1deg); }
-        30% { transform: translate(3px, 2px) rotate(0deg); }
-        40% { transform: translate(1px, -1px) rotate(1deg); }
-        50% { transform: translate(-1px, 2px) rotate(-1deg); }
-        60% { transform: translate(-3px, 1px) rotate(0deg); }
-        70% { transform: translate(3px, 1px) rotate(-1deg); }
-        80% { transform: translate(-1px, -1px) rotate(1deg); }
-        90% { transform: translate(1px, 2px) rotate(0deg); }
-        100% { transform: translate(1px, -2px) rotate(-1deg); }
-    }
-  button {
-    transition: transform .2s;
-  }
-</style> 
 <div class="row p-4 border-0" style="background-color: transparent;">
     <div class="col-md-4 offset-md-4">
-        <div class="card border-0">
+        <div class="card border-0 shadow-lg">
             <div class="card-body">
-                <form>
-                    <div class="form-group">
-                        <div class="text-center">
-                            <label class="text-dark"><i class="fas fa-envelope"></i> Email</label>
+                <form  novalidate  (ngSubmit)="onLogin()" [formGroup]="loginForm">
+                    <div class="form-group text-center">
+                        <label class="text-dark" for="email"><i class="fas fa-envelope"></i> Correo electronico</label>
+                        <input class="form-control shadow rounded" type="email" name="" id="email" placeholder="Correo electronico"
+                        formControlName="email" [class]="validField('email')">
+                        <div class="invalid-feedback">
+                            <span *ngIf="loginForm.get('email').errors?.required">
+                                <strong>Por favor, introduzca un email.</strong>
+                            </span>
+                            <span *ngIf="loginForm.get('email').errors?.pattern">
+                                <strong>Correo electronico no valido.</strong>
+                            </span>
                         </div>
-                        <input class="form-control shadow rounded" type="email" name="" id="email" placeholder="Email" autofocus>
-                    </div>
-                    <div class="form-group">
-                        <div class="text-center">
-                            <label class="text-dark"><i class="fas fa-unlock"></i> Password</label>
-                        </div>
-                        <input class="form-control shadow rounded" type="password" placeholder="Password" name="" id="password">
                     </div>
                     <div class="form-group text-center">
-                        <a href="" class="link-primary">Registrarse</a>  
-                    </div>
-                    <hr>
-                    <div class="form-group">
-                        <div class="text-center">
-                            <button class="btn btn-success btn-block shadow rounded">Sign in <i class="fas fa-check"></i></button>
+                        <label class="text-dark" for="password"><i class="fas fa-unlock"></i> Contraseña</label>
+                        <input class="form-control shadow rounded" [type]="passwordType" placeholder="Contraseña" name="password" id="password"
+                        formControlName="password" [class]="validField('password')" data-toggle="password">
+                        <a class="btn btn-outline rounded-pill border-0" style="background-color: transparent;"
+                        (click)="loginForm.get('password').value != '' ? showPassword() : ''">
+                            <div class="text-center" *ngIf="passwordType == 'password'">Mostrar contraseña <i class="far fa-eye"></i></div>
+                            <div class="text-center" *ngIf="passwordType == 'text'">Ocultar contraseña <i class="far fa-eye-slash"></i></div>
+                        </a>
+                        <div class="invalid-feedback">
+                            <span *ngIf="loginForm.get('password').errors?.required">
+                                <strong>Por favor, introduzca un password.</strong>
+                            </span>
                         </div>
                     </div>
+                    <div class="form-group text-center">
+                        <a href="" class="link-primary" [routerLink]="['/register']" routerLinkActive="router-link-active" >Registrarse</a>  
+                    </div>
+                    <hr>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-success btn-block shadow rounded" [ngClass]="isValidData()">
+                            Sign in <i class="fas fa-check" *ngIf="loginForm.valid"></i>
+                            <i class="fas fa-exclamation-circle" *ngIf="!loginForm.valid"></i> 
+                        </button>
+                    </div>
                 </form>
+                
+                <button class="btn btn-block shadow rounded btn-google mt-3" (click)="onGoogleLogin()">
+                    Sign in con Google <i class="fab fa-google"></i>
+                </button>           
             </div>
         </div>
     </div>
