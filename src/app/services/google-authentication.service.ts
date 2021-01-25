@@ -32,7 +32,11 @@ export class GoogleAuthenticationService {
   }
 
   async register(email:string, password:string){
+    var actionCodeSettings = {
+      url: 'https://www.example.com/finishSignUp?cartId=1234',
+    };
     const result = await this.auth.createUserWithEmailAndPassword(email, password);
+    this.auth.sendSignInLinkToEmail(email, actionCodeSettings)
     return result;
     
   }

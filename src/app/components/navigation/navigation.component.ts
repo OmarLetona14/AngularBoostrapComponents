@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleAuthenticationService } from 'src/app/services/google-authentication.service';
+import { PlataformService } from 'src/app/services/plataform.service';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-navigation',
@@ -8,24 +10,34 @@ import { GoogleAuthenticationService } from 'src/app/services/google-authenticat
 })
 export class NavigationComponent implements OnInit {
 
+  web:boolean;
+  webStyle = 'item-web'
+  mobileStyle = 'item-mobile'
   user:any = {};
-  constructor(private googleService:GoogleAuthenticationService) { 
+  constructor(private googleService:GoogleAuthenticationService, private spinner:SpinnerService, private plataformService:PlataformService) { 
     this.getUser();
   }
 
   ngOnInit(): void {
-    
+    this.web =this.plataformService.isMobile();
   }
 
   signOut(){
-    this.googleService.logOutWithEmail();
-    window.location.href='/home';
+    this.spinner.getSpinner();
+    this.googleService.logOutWithEmail().then((results)=>{
+      this.spinner.stopSpinner();
+      window.location.href='/home';
+    })
+    .then(()=>{
+      this.spinner.stopSpinner();
+    });
   }
 
   getUser(){
     this.googleService.getCurrentUser()
     .then((results)=>{
       this.user = results;
+      console.log(this.user);
     }).catch((error)=>{
       console.log(error);
     });

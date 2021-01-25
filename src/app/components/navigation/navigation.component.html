@@ -1,37 +1,40 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light rounded shadow-lg">
+<nav class="navbar navbar-expand-md navbar-light justify-content-center bg-light rounded shadow-lg">
     <a class="navbar-brand rounded-pill" routerLink='/home' style="background-color: white;"><i class="fas fa-seedling"></i> CounSearch </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link rounded-pill" routerLink='/home'><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+
+          <a class="nav-link rounded-pill " [ngClass]="!web ? webStyle : mobileStyle"  routerLink='/home'><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link rounded-pill" *ngIf="user == null" routerLink='/about'><i class="fas fa-question-circle"></i> Acerca de nosotros</a>
+          <a class="nav-link rounded-pill" *ngIf="user == null" [ngClass]="!web ? webStyle : mobileStyle" routerLink='/about'><i class="fas fa-question-circle"></i> Acerca de nosotros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link rounded-pill" *ngIf="user==null" routerLink='/login'><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a class="nav-link rounded-pill" [ngClass]="!web ? webStyle : mobileStyle" *ngIf="user == null" routerLink='/login'><i class="fas fa-sign-in-alt"></i> Login</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link rounded-pill" *ngIf="user!=null"  routerLink='/countries'><i class="fab fa-product-hunt"></i> Paises</a>
+            <a class="nav-link rounded-pill" [ngClass]="!web ? webStyle : mobileStyle" *ngIf="user!=null"  routerLink='/countries'><i class="fab fa-product-hunt"></i> Paises</a>
+        </li>
+        <li class="nav-item"> 
+          <a class="nav-link rounded-pill" [ngClass]="!web ? webStyle : mobileStyle" *ngIf="user!=null"  routerLink='/covidStats'><i class="fas fa-virus"></i> Track for COVID</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link rounded-pill" *ngIf="user!=null"  routerLink='/covidStats'><i class="fas fa-virus"></i> Track for COVID</a>
+          <a class="nav-link rounded-pill" [ngClass]="!web ? webStyle : mobileStyle" routerLink='/contact'><i class="fas fa-address-book"></i> Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link rounded-pill"  *ngIf="user==null" routerLink='/contact'><i class="fas fa-address-book"></i> Contact</a>
+          <a class="nav-link rounded-pill" [ngClass]="!web ? webStyle : mobileStyle" routerLink='/products'><i class="fab fa-product-hunt"></i> Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link rounded-pill" routerLink='/products'><i class="fab fa-product-hunt"></i> Products</a>
+          <a class="nav-link rounded-pill" [ngClass]="!web ? webStyle : mobileStyle" *ngIf="user!=null" routerLink='/messages'><i class="fas fa-envelope"></i> Messages</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link rounded-pill"  *ngIf="user!=null" routerLink='/messages'><i class="fas fa-envelope"></i> Messages</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link rounded-pill float-right" *ngIf="user!=null" (click) = "signOut()"><i class="fas fa-sign-out-alt"></i> Sign out</a>
-        </li>
+        <div class="navfloatright">
+          <li class="nav-item">
+            <a class="nav-link rounded-pill float-right" *ngIf="user!=null" (click) = "signOut()"><i class="fas fa-sign-out-alt"></i> Sign out</a>
+          </li>
+        </div>
       </ul>
     </div>
   </nav>

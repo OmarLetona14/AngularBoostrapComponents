@@ -1,22 +1,39 @@
 <div class="container d-sm-block">
-  <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify"
-href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: fixed; right: 80px; bottom: 80px; font-size: 25px; background-color: white;color: black;">
-    <i class="fab fa-instagram"></i>
-</a>
-  <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify"
-  href="https://github.com/OmarLetona14" target="_blank" style="position: fixed; right: 80px; bottom: 160px; font-size: 25px; background-color: white;color: black;">
-  <i class="fab fa-github"></i>
-  </a>
-  <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify"
-  href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: fixed; right: 80px; bottom: 240px; font-size: 25px; background-color: white;color: black;">
-    <i class="fab fa-facebook"></i>
-  </a>
+  <ng-container *ngIf="user==null">
+    <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify"
+    href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: fixed; right: 80px; bottom: 80px; font-size: 25px; background-color: white;color: black;">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </ng-container>
+  <ng-container *ngIf="user == null">
+    <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify"
+    href="https://github.com/OmarLetona14" target="_blank" style="position: fixed; right: 80px; bottom: 160px; font-size: 25px; background-color: white;color: black;">
+      <i class="fab fa-github"></i>
+    </a>
+  </ng-container>
+  <ng-container *ngIf="user == null">
+    <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify"
+    href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: fixed; right: 80px; bottom: 240px; font-size: 25px; background-color: white;color: black;">
+      <i class="fab fa-facebook"></i>
+    </a>
+  </ng-container>
+  <ng-container *ngIf="user!=null">
+    <a class="btn btn-lg rounded-circle shadow-lg"
+    href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: fixed; right: 80px; bottom: 240px; font-size: 25px; background-color: white;color: black;">
+      <i class="fas fa-sign-out-alt"></i>
+    </a>
+  </ng-container>
+  <ng-container *ngIf="user!=null">
+    <a class="btn btn-lg rounded-circle shadow-lg" 
+    href="https://github.com/OmarLetona14" target="_blank" style="position: fixed; right: 80px; bottom: 160px; font-size: 25px; background-color: white;color: black;">
+      <i class="fas fa-user-circle"></i>
+    </a>
+  </ng-container>
   <a href="/editProduct" class="btn btn-lg rounded-circle shadow-lg" *ngIf="this.router.url == '/products'"
    style="position: fixed; font-size: 25px; background-color: white;color: black;" [ngStyle]="!verify ? position_web : position_phone">
     <i class="fas fa-plus"></i></a>
     <a href="/products" class="btn btn-lg rounded-circle shadow-lg" *ngIf="this.router.url.startsWith('/detailProduct')"
    style="position: fixed;font-size: 25px; background-color: white;color: black;" [ngStyle]="!verify ? position_web : position_phone">
    <i class="fas fa-arrow-left"></i></a>
-
 </div>
 
