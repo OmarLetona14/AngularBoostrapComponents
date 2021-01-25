@@ -22,17 +22,6 @@ export class NavigationComponent implements OnInit {
     this.web =this.plataformService.isMobile();
   }
 
-  signOut(){
-    this.spinner.getSpinner();
-    this.googleService.logOutWithEmail().then((results)=>{
-      this.spinner.stopSpinner();
-      window.location.href='/home';
-    })
-    .then(()=>{
-      this.spinner.stopSpinner();
-    });
-  }
-
   getUser(){
     this.googleService.getCurrentUser()
     .then((results)=>{

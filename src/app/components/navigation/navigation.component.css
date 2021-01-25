@@ -9,11 +9,10 @@
   }
   a {
     transition: transform .2s;
-    margin-left: 5px;
   }
 
   .navfloatright{
       position: relative;
-      margin-left: 375px;
+      margin-left: 300px;
   }
   
