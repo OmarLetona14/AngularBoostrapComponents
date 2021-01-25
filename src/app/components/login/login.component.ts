@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GoogleAuthenticationService } from 'src/app/services/google-authentication.service';
+import { SpinnerService } from 'src/app/services/spinner.service';
 import  Swal from "sweetalert2";
 
 @Component({
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   private emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
   public loginForm: FormGroup;  
 
-  constructor(private fb:FormBuilder, private googleLoginService:GoogleAuthenticationService) { }
+  constructor(private fb:FormBuilder, private googleLoginService:GoogleAuthenticationService, 
+    private spinner:SpinnerService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -22,18 +24,30 @@ export class LoginComponent implements OnInit {
 
   onLogin(){
     if (this.loginForm.valid){
-      const formValues = this.loginForm.value;
       try {
-        Swal.fire('Mensaje enviado', `<strong>
-        Su mensaje ha sido enviado, <br>
-        pronto nos pondremos en contacto
-        con usted.</strong>`, 'success');
-        this.loginForm.reset();
+        this.spinner.getSpinner();
+        this.googleLoginService.logInWithEmail(
+          this.loginForm.get('email').value,
+          this.loginForm.get('password').value
+        ).then((results)=>{
+          Swal.fire('Bienvenido', `<strong>
+          Bienvenido ${results.user.email}
+          </strong>`, 'success');
+          window.location.href='/home'
+          this.spinner.stopSpinner();
+          this.loginForm.reset();
+        }).catch((error)=>{
+          Swal.fire('Credenciales incorrectas', `<strong>
+          Email o password incorrectos, por favor <br>
+          inténtelo de nuevo.
+          </strong>`, 'error');
+          this.spinner.stopSpinner();
+          this.loginForm.reset();
+        });
       } catch (error) {
         Swal.fire('Ocurrio un error', `<strong>
-      Ocurrio un error al intentar enviar su mensaje <br>
-      por favor, intentelo de nuevo.
-      </strong>`, 'error');
+         Error al comunicarse con el servidor.
+        </strong>`, 'error');
       }
     }
     else{
@@ -50,6 +64,10 @@ export class LoginComponent implements OnInit {
     else{
       return 'btn-danger';
     }
+  }
+
+  getCurrentUser(){
+
   }
 
   validField(fieldName:string):string{
@@ -75,7 +93,28 @@ export class LoginComponent implements OnInit {
   }
 
   onGoogleLogin(){
-    this.googleLoginService.logIn();
+    try {
+      this.spinner.getSpinner();
+      this.googleLoginService.logInWithGoogle().then((results)=>{
+        Swal.fire('Bienvenido', `<strong>
+        Bienvenido ${results.user.email}
+        </strong>`, 'success');
+        window.location.href='/home'
+        this.spinner.stopSpinner();
+        this.loginForm.reset();
+      }).catch((error)=>{
+        Swal.fire('Credenciales incorrectas', `<strong>
+        Email o password incorrectos, por favor <br>
+        inténtelo de nuevo.
+        </strong>`, 'error');
+        this.spinner.stopSpinner();
+        this.loginForm.reset();
+      });
+    } catch (error) {
+      Swal.fire('Ocurrio un error', `<strong>
+       Error al comunicarse con el servidor.
+      </strong>`, 'error');
+    }
   }
 
 }

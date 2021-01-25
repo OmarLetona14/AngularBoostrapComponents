@@ -1,7 +1,7 @@
 <form novalidate class="row g-3" (ngSubmit)="onSaveData()" [formGroup]="contactForm">
     <div class="col-md-6">
       <label class="form-label"><i class="fas fa-envelope"></i> Correo electronico <small style="color:red">*</small></label>
-      <input type="email" class="form-control shadow" id="email" placeholder="Email" formControlName="email" [class]="validField('email')" autofocus>
+      <input type="email" class="form-control shadow-lg rounded-pill" id="email" placeholder="Email" formControlName="email" [class]="validField('email')" autofocus>
       <div class="invalid-feedback">
         <span *ngIf="contactForm.get('email').errors?.required">
           <strong>Por favor, introduzca un correo electronico.</strong>
@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-6">
       <label class="form-label"><i class="fas fa-unlock-alt"></i> Contrasenia <small style="color:red">*</small></label>
-      <input type="password" class="form-control shadow" id="password" placeholder="Password" formControlName="password" [class]="validField('password')">
+      <input type="password" class="form-control shadow-lg rounded-pill" id="password" placeholder="Password" formControlName="password" [class]="validField('password')">
       <div class="invalid-feedback">
         <span *ngIf="contactForm.get('password').errors?.required">
           <strong> Please enter a password.</strong>
@@ -22,9 +22,9 @@
       </div>
       <hr>
     </div>
-    <div class="col-12">
+    <div class="col-md-12">
       <label class="form-label"><i class="fas fa-map-marker-alt"></i> Direccion <small style="color:red">*</small></label>
-      <input type="text" class="form-control shadow" id="address" placeholder="Address" formControlName="address" [class]="validField('address')">
+      <input type="text" class="form-control shadow-lg rounded-pill" id="address" placeholder="Address" formControlName="address" [class]="validField('address')">
       <div class="invalid-feedback">
         <span *ngIf="contactForm.get('address').errors?.required">
           <strong>Por favor, introduzca una direccion.</strong>
@@ -34,7 +34,7 @@
     </div>
     <div class="col-md-12">
       <label class="form-label"><i class="far fa-comment-dots"></i> Mensaje <small style="color:red">*</small></label>
-      <textarea id="message" cols="30" rows="5" class="form-control shadow" placeholder="Write message..." formControlName="message" [class]="validField('message')">
+      <textarea id="message" cols="30" rows="5" class="form-control shadow-lg rounded" placeholder="Write message..." formControlName="message" [class]="validField('message')">
       </textarea>
       <div class="invalid-feedback">
         <span *ngIf="contactForm.get('message').errors?.required">
@@ -48,13 +48,10 @@
         </span>
       </div>
     </div>
-    <div class="col-12">
+    <div class="col-md-12">
         <hr>
-      <button type="submit" class="btn btn-success btn-lg btn-block shadow" [ngClass]="isValidData()">Mandar mensaje <i class="fas fa-check" *ngIf="contactForm.valid"></i>
+      <button type="submit" class="btn btn-success btn-lg btn-block shadow-lg rounded-pill" [ngClass]="isValidData()">Mandar mensaje <i class="fas fa-check" *ngIf="contactForm.valid"></i>
          <i class="fas fa-exclamation-circle" *ngIf="!contactForm.valid"></i> 
       </button>
     </div>
   </form> 
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-fade" [fullScreen] = "true">
-    <p style="color: white" > Loading... </p>
-</ngx-spinner>

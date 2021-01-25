@@ -54,7 +54,7 @@
     </div>
     <div class="form-row mt-3">
         <label class="form-label" for="country"><i class="fas fa-globe-americas"></i> Pais <small style="color:red">*</small></label>
-        <select class="form-control shadow-lg" name="country" id="country" formControlName="country" >
+        <select class="form-control shadow-lg rounded-pill" name="country" id="country" formControlName="country" >
             <option value="{{c.name}}" *ngFor="let c of countries">{{c.name}}</option> 
         </select>
         <div class="invalid-feedback">
@@ -76,6 +76,3 @@
     </div>
 </form>
 
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-fade" [fullScreen] = "true">
-    <p style="color: white" > Loading... </p>
-</ngx-spinner>

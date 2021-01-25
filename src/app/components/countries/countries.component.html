@@ -15,11 +15,6 @@
         <div class="col-10">
             <label for="exampleDataList" class="form-label">Search for country</label>
             <input class="form-control" list="datalistOptions" name="filterName" [(ngModel)]="filterName" placeholder="Type to search...">
-            <!-- 
-            <datalist id="datalistOptions">
-                <option *ngFor="let country of countries" value="{{country.name}}">
-            </datalist>
-            -->
         </div>
         <div class="col-2 text-center">
             <br>
@@ -47,10 +42,7 @@
         </tbody>
     </table>
 </div>
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "line-spin-fade" [fullScreen] = "true">
-    <p style="color: white" > Loading... </p>
-</ngx-spinner>
-    
+
 <!--
 <ngx-spinner bdColor = "rgba(255,255,255,0.8)" size = "medium" color = "#000000" 
 type = "square-jelly-box" [fullScreen] = "true"

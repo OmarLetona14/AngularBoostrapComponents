@@ -1,0 +1,9 @@
+.btn:hover {
+    box-shadow: 0 16px 24px 0 rgba(0,0,0,0.2);
+    -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1);
+  }
+button {
+  transition: transform .2s;
+}

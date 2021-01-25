@@ -5,7 +5,7 @@
                 <form  novalidate  (ngSubmit)="onLogin()" [formGroup]="loginForm">
                     <div class="form-group text-center">
                         <label class="text-dark" for="email"><i class="fas fa-envelope"></i> Correo electronico</label>
-                        <input class="form-control shadow rounded" type="email" name="" id="email" placeholder="Correo electronico"
+                        <input class="form-control shadow-lg rounded-pill" type="email" name="" id="email" placeholder="Correo electronico"
                         formControlName="email" [class]="validField('email')">
                         <div class="invalid-feedback">
                             <span *ngIf="loginForm.get('email').errors?.required">
@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group text-center">
                         <label class="text-dark" for="password"><i class="fas fa-unlock"></i> Contraseña</label>
-                        <input class="form-control shadow rounded" [type]="passwordType" placeholder="Contraseña" name="password" id="password"
+                        <input class="form-control shadow-lg rounded-pill" [type]="passwordType" placeholder="Contraseña" name="password" id="password"
                         formControlName="password" [class]="validField('password')" data-toggle="password">
                         <a class="btn btn-outline rounded-pill border-0" style="background-color: transparent;"
                         (click)="loginForm.get('password').value != '' ? showPassword() : ''">
@@ -32,18 +32,17 @@
                         </div>
                     </div>
                     <div class="form-group text-center">
-                        <a href="" class="link-primary" [routerLink]="['/register']" routerLinkActive="router-link-active" >Registrarse</a>  
+                        <a href="" class="link-primary " [routerLink]="['/register']" routerLinkActive="router-link-active" >Registrarse</a>  
                     </div>
                     <hr>
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn-success btn-block shadow rounded" [ngClass]="isValidData()">
+                        <button type="submit" class="btn btn-success btn-block shadow-lg rounded-pill" [ngClass]="isValidData()">
                             Sign in <i class="fas fa-check" *ngIf="loginForm.valid"></i>
                             <i class="fas fa-exclamation-circle" *ngIf="!loginForm.valid"></i> 
                         </button>
                     </div>
                 </form>
-                
-                <button class="btn btn-block shadow rounded btn-google mt-3" (click)="onGoogleLogin()">
+                <button class="btn btn-block shadow-lg rounded-pill btn-google mt-3" (click)="onGoogleLogin()">
                     Sign in con Google <i class="fab fa-google"></i>
                 </button>           
             </div>

@@ -36,6 +36,8 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { DetailsProductComponent } from './components/details-product/details-product.component';
 import { MessageComponent } from './components/message/message.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { RegisterComponent } from './components/register/register.component';
     EditProductComponent,
     DetailsProductComponent,
     MessageComponent,
-    RegisterComponent
+    RegisterComponent,
+    SpinnerComponent
   ],
   imports: [
     RouterModule,
@@ -67,6 +70,7 @@ import { RegisterComponent } from './components/register/register.component';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    AngularFireAuthModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [

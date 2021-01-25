@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CountriesServiceService } from 'src/app/services/countries-service.service';
-import { CurrencyService } from 'src/app/services/currency.service';
+import { GoogleAuthenticationService } from 'src/app/services/google-authentication.service';
 import { SpinnerService } from 'src/app/services/spinner.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2'
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   country:string =''
   countries:any = []
   constructor(private countryService:CountriesServiceService, private fb:FormBuilder, private spinner:SpinnerService,
-    private userService:UserService) { }
+    private userService:UserService, private googleService:GoogleAuthenticationService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -31,14 +31,28 @@ export class RegisterComponent implements OnInit {
       const formValues = this.registerForm.value;
       try {
         this.spinner.getSpinner();
+        this.googleService.register(this.registerForm.get('email').value, 
+        this.registerForm.get('password').value).then(()=>{
+          this.spinner.stopSpinner();
+          Swal.fire('Registro exitoso', `<strong>
+          Sus datos han sido guardados, <br>
+          hemos enviado un correo de verificacion a su bandeja de entrada.
+            </strong>`, 'success');
+          this.registerForm.reset();
+        })
+        .catch((error)=>{
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          Swal.fire('Ocurrio un error', `<strong>
+          ${errorCode} : ${errorMessage}
+            </strong>`, 'error');
+            this.spinner.stopSpinner();
+        });
+        /*
         await this.userService.saveUser(formValues,null).then(()=>{
           this.spinner.stopSpinner();
-        });   
-        Swal.fire('Registro exitoso', `<strong>
-        Sus datos han sido guardados, <br>
-        hemos enviado un correo de verificacion a su bandeja de entrada.
-        </strong>`, 'success');
-        this.registerForm.reset();
+        });   */
+        
       } catch (error) {
         Swal.fire('Ocurrio un error', `<strong>
       Ocurrio un error al intentar enviar su mensaje <br>
