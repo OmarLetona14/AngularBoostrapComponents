@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
           var errorCode = error.code;
           var errorMessage = error.message;
           Swal.fire('Ocurrio un error', `<strong>
-          ${errorCode} : ${errorMessage}
+          ${errorMessage}
             </strong>`, 'error');
             this.spinner.stopSpinner();
         });
