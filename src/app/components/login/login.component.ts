@@ -65,11 +65,7 @@ export class LoginComponent implements OnInit {
       return 'btn-danger';
     }
   }
-
-  getCurrentUser(){
-
-  }
-
+  
   validField(fieldName:string):string{
     const validatedField = this.loginForm.get(fieldName);
     return (!validatedField?.valid && validatedField?.touched)

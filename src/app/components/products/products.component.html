@@ -11,8 +11,12 @@
 <div class="col-md-4 p-2" *ngFor="let product of products | countryName:filterProduct">
     <div class="card text-center shadow bg-white p-4 rounded" >
         <div class="card-header bg-dark text-white align-items-center" >
-            <h3>{{product.name}} <button class="btn btn-group btn-warning" (click)="deleteItem(product)"><i class="fas fa-trash"></i></button>
-                <button class="btn btn-group btn-success" (click)="editItem(product)"><i class="fas fa-edit"></i></button></h3>
+            <h3>{{product.name}} 
+                <ng-container *ngIf="user!=null">
+                    <button class="btn btn-group btn-warning" (click)="deleteItem(product)"><i class="fas fa-trash"></i></button>
+                    <button class="btn btn-group btn-success" (click)="editItem(product)"><i class="fas fa-edit"></i></button>  
+                </ng-container>
+            </h3> 
         </div>
         <!-- --> <img src="{{product.image_url != null ? product.image_url : noImageURL}}" (click)="details(product)" class="card-img-top border-0">  
         <div class="card-body"> 

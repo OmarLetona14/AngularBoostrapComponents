@@ -26,7 +26,6 @@ export class NavigationComponent implements OnInit {
     this.googleService.getCurrentUser()
     .then((results)=>{
       this.user = results;
-      console.log(this.user);
     }).catch((error)=>{
       console.log(error);
     });

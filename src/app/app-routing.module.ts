@@ -17,6 +17,7 @@ import {EditProductComponent} from '../app/components/edit-product/edit-product.
 import {DetailsProductComponent} from '../app/components/details-product/details-product.component';
 import { MessageComponent } from './components/message/message.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,10 @@ const routes: Routes = [
   {
     path:'register',
     component:RegisterComponent
+  },
+  {
+    path:'profile',
+    component:ProfileComponent
   },
   {
     path:'**',

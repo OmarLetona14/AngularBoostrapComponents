@@ -32,8 +32,9 @@ export class RegisterComponent implements OnInit {
       try {
         this.spinner.getSpinner();
         this.googleService.register(this.registerForm.get('email').value, 
-        this.registerForm.get('password').value).then(()=>{
+        this.registerForm.get('password').value).then((results)=>{
           this.spinner.stopSpinner();
+          results.additionalUserInfo.profile = formValues;
           Swal.fire('Registro exitoso', `<strong>
           Sus datos han sido guardados, <br>
           hemos enviado un correo de verificacion a su bandeja de entrada.

@@ -1,38 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ContactService } from 'src/app/services/contact.service';
+import { GoogleAuthenticationService } from 'src/app/services/google-authentication.service';
 import { SpinnerService } from 'src/app/services/spinner.service';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2'
 
 @Component({
-  selector: 'app-formvalidator',
-  templateUrl: './formvalidator.component.html',
-  styleUrls: ['./formvalidator.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class FormvalidatorComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
+  user:any = {}
   private emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-  public contactForm: FormGroup;  
-
-  constructor(private fb:FormBuilder, private contactService:ContactService, private spinner:SpinnerService) { }
+  public userForm: FormGroup;  
+  noProfile: 'https://www.kindpng.com/picc/m/22-223965_no-profile-picture-icon-circle-member-icon-png.png'
+  constructor(private fb:FormBuilder, private userService:GoogleAuthenticationService, private spinner:SpinnerService) { 
+    this.spinner.getSpinner();
+    this.userService.getCurrentUser()
+    .then((results)=>{
+      this.user = results;
+      this.userForm.patchValue(this.user);
+      this.spinner.stopSpinner();
+    });
+  }
 
   ngOnInit(): void {
     this.initForm();
+    
   }
 
   async onSaveData():Promise<void>{
-    if (this.contactForm.valid){
-      const formValues = this.contactForm.value;
+    if (this.userForm.valid){
+      const formValues = this.userForm.value;
       try {
-        this.spinner.getSpinner();
-        await this.contactService.saveContact(formValues).then(()=>{
-          this.spinner.stopSpinner();    
-          Swal.fire('Mensaje enviado', `<strong>
-          Su mensaje ha sido enviado, <br>
-          pronto nos pondremos en contacto
-          con usted.</strong>`, 'success');
-          this.contactForm.reset();
-        });
+        this.user.update
       } catch (error) {
         Swal.fire('Ocurrio un error', `<strong>
       Ocurrio un error al intentar enviar su mensaje <br>
@@ -48,7 +50,7 @@ export class FormvalidatorComponent implements OnInit {
   }
 
   isValidData():String{
-    if (this.contactForm.valid){
+    if (this.userForm.valid){
       return 'btn-success';
     }
     else{
@@ -57,15 +59,16 @@ export class FormvalidatorComponent implements OnInit {
   }
 
   validField(fieldName:string):string{
-    const validatedField = this.contactForm.get(fieldName);
+    const validatedField = this.userForm.get(fieldName);
     return (!validatedField?.valid && validatedField?.touched)
     ? 'is-invalid' : validatedField?.touched ? 'is-valid' : '';
   }
 
   private initForm():void{
-    this.contactForm = this.fb.group({
+    this.userForm = this.fb.group({
       // Estructura [valor inicial, validaciones  ]
-      name: ['', [Validators.required]],
+      displayName: ['', [Validators.required]],
+      photoURL: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       message: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(150)]],
     });

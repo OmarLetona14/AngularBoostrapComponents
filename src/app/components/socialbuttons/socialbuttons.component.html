@@ -1,38 +1,42 @@
 <div class="container d-sm-block">
   <ng-container *ngIf="user==null">
-    <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify"
+    <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify" [ngClass]="!verify ? webStyle : phoneStyle"
     href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: fixed; right: 80px; bottom: 80px; font-size: 25px; background-color: white;color: black;">
       <i class="fab fa-instagram"></i>
     </a>
   </ng-container>
   <ng-container *ngIf="user == null">
-    <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify"
+    <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify" [ngClass]="!verify ? webStyle : phoneStyle"
     href="https://github.com/OmarLetona14" target="_blank" style="position: fixed; right: 80px; bottom: 160px; font-size: 25px; background-color: white;color: black;">
       <i class="fab fa-github"></i>
     </a>
   </ng-container>
   <ng-container *ngIf="user == null">
-    <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify"
+    <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify" [ngClass]="!verify ? webStyle : phoneStyle"
     href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: fixed; right: 80px; bottom: 240px; font-size: 25px; background-color: white;color: black;">
       <i class="fab fa-facebook"></i>
     </a>
   </ng-container>
   <ng-container *ngIf="user!=null">
-    <a class="btn btn-lg rounded-circle shadow-lg"
-    (click)="signOut()" style="position: fixed; right: 80px; bottom: 240px; font-size: 25px; background-color: white;color: black;">
+    <a class="btn btn-lg rounded-circle shadow-lg" [ngClass]="!verify ? webStyle : phoneStyle"
+    (click)="signOut()" style="position: fixed;font-size: 25px; background-color: white;color: black;" 
+    [ngStyle]="!verify ? position_web_signout : position_phone_signout">
       <i class="fas fa-sign-out-alt"></i>
     </a>
   </ng-container>
   <ng-container *ngIf="user!=null">
-    <a class="btn btn-lg rounded-circle shadow-lg" 
-    href="https://github.com/OmarLetona14" target="_blank" style="position: fixed; right: 80px; bottom: 160px; font-size: 25px; background-color: white;color: black;">
+    <a class="btn btn-lg rounded-circle shadow-lg"  [ngClass]="!verify ? webStyle : phoneStyle"
+    href="/profile" style="position: fixed;font-size: 25px; background-color: white;color: black;"
+    [ngStyle]="!verify ? position_web_profile : position_phone_profile">
       <i class="fas fa-user-circle"></i>
     </a>
   </ng-container>
-  <a href="/editProduct" class="btn btn-lg rounded-circle shadow-lg" *ngIf="this.router.url == '/products'"
+  <ng-container *ngIf="user!=null">
+    <a href="/editProduct" class="btn btn-lg rounded-circle shadow-lg" *ngIf="this.router.url == '/products'" [ngClass]="!verify ? webStyle : phoneStyle"
    style="position: fixed; font-size: 25px; background-color: white;color: black;" [ngStyle]="!verify ? position_web : position_phone">
     <i class="fas fa-plus"></i></a>
-    <a href="/products" class="btn btn-lg rounded-circle shadow-lg" *ngIf="this.router.url.startsWith('/detailProduct')"
+  </ng-container>
+    <a href="/products" class="btn btn-lg rounded-circle shadow-lg" *ngIf="this.router.url.startsWith('/detailProduct')" [ngClass]="!verify ? webStyle : phoneStyle"
    style="position: fixed;font-size: 25px; background-color: white;color: black;" [ngStyle]="!verify ? position_web : position_phone">
    <i class="fas fa-arrow-left"></i></a>
 </div>

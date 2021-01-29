@@ -6,7 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //Models  
-import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { FooterPageComponent } from './components/footer-page/footer-page.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
@@ -38,11 +38,11 @@ import { MessageComponent } from './components/message/message.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProgressBarComponent,
     NavigationComponent,
     FooterPageComponent,
     HomePageComponent,
@@ -59,7 +59,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     DetailsProductComponent,
     MessageComponent,
     RegisterComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ProfileComponent
   ],
   imports: [
     RouterModule,

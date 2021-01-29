@@ -1,6 +1,16 @@
 <form novalidate class="row g-3" (ngSubmit)="onSaveData()" [formGroup]="contactForm">
+  <div class="col-md-6">
+    <label class="form-label"><i class="far fa-user"></i> Nombre <small style="color:red">*</small></label>
+    <input type="text" class="form-control shadow-lg rounded-pill" id="name" placeholder="Nombre" formControlName="name" [class]="validField('name')">
+    <div class="invalid-feedback">
+      <span *ngIf="contactForm.get('name').errors?.required">
+        <strong> Debe escribir un nombre.</strong>
+      </span>
+    </div>
+    <hr>
+  </div>
     <div class="col-md-6">
-      <label class="form-label"><i class="fas fa-envelope"></i> Correo electronico <small style="color:red">*</small></label>
+      <label class="form-label"><i class="far fa-envelope"></i> Correo electronico <small style="color:red">*</small></label>
       <input type="email" class="form-control shadow-lg rounded-pill" id="email" placeholder="Email" formControlName="email" [class]="validField('email')" autofocus>
       <div class="invalid-feedback">
         <span *ngIf="contactForm.get('email').errors?.required">
@@ -8,26 +18,6 @@
         </span>
         <span *ngIf="contactForm.get('email').errors?.pattern">
           <strong>Correo electronico no valido.</strong>
-        </span>
-      </div>
-      <hr>
-    </div>
-    <div class="col-md-6">
-      <label class="form-label"><i class="fas fa-unlock-alt"></i> Contrasenia <small style="color:red">*</small></label>
-      <input type="password" class="form-control shadow-lg rounded-pill" id="password" placeholder="Password" formControlName="password" [class]="validField('password')">
-      <div class="invalid-feedback">
-        <span *ngIf="contactForm.get('password').errors?.required">
-          <strong> Please enter a password.</strong>
-        </span>
-      </div>
-      <hr>
-    </div>
-    <div class="col-md-12">
-      <label class="form-label"><i class="fas fa-map-marker-alt"></i> Direccion <small style="color:red">*</small></label>
-      <input type="text" class="form-control shadow-lg rounded-pill" id="address" placeholder="Address" formControlName="address" [class]="validField('address')">
-      <div class="invalid-feedback">
-        <span *ngIf="contactForm.get('address').errors?.required">
-          <strong>Por favor, introduzca una direccion.</strong>
         </span>
       </div>
       <hr>
