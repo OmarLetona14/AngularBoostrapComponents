@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common'
 import { GoogleAuthenticationService } from 'src/app/services/google-authentication.service';
 import { PlataformService } from 'src/app/services/plataform.service';
 import { SpinnerService } from 'src/app/services/spinner.service';
@@ -15,14 +16,14 @@ export class SocialbuttonsComponent implements OnInit {
   phoneStyle: 'item-mobile'
   user:any = {}
   position_web = {'right': '80px', 'bottom': '320px'}
-  position_phone = {'right': '40px', 'bottom': '40px'}
+  position_phone = {'right': '20px', 'bottom': '40px'}
   position_web_profile = {'right': '80px', 'bottom': '80px'}
-  position_phone_profile = {'right': '40px', 'bottom': '120px'}
+  position_phone_profile = {'right': '20px', 'bottom': '120px'}
   position_web_signout = {'right': '80px', 'bottom': '160px'}
-  position_phone_signout = {'right': '40px', 'bottom': '200px'}
+  position_phone_signout = {'right': '20px', 'bottom': '200px'}
   verify:Boolean = false;
   constructor(public router:Router, private googleService:GoogleAuthenticationService, 
-    private platarformService:PlataformService, private spinner:SpinnerService) { 
+    private platarformService:PlataformService, private spinner:SpinnerService, public location: Location) { 
     this.verify =  platarformService.isMobile();
   }
 
@@ -43,4 +44,10 @@ export class SocialbuttonsComponent implements OnInit {
     });
   }
 
+  goBack(){
+    if(this.user!=null || undefined){
+      this.location.isCurrentPathEqualTo('/home')
+      this.location.back();
+    } 
+  }
 }

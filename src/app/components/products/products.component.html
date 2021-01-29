@@ -13,8 +13,8 @@
         <div class="card-header bg-dark text-white align-items-center" >
             <h3>{{product.name}} 
                 <ng-container *ngIf="user!=null">
-                    <button class="btn btn-group btn-warning" (click)="deleteItem(product)"><i class="fas fa-trash"></i></button>
-                    <button class="btn btn-group btn-success" (click)="editItem(product)"><i class="fas fa-edit"></i></button>  
+                    <button class="btn btn-group ml-2 btn-outline-warning" (click)="deleteItem(product)"><i class="fas fa-trash"></i></button>
+                    <button class="btn btn-group ml-2 btn-outline-success" (click)="editItem(product)"><i class="fas fa-edit"></i></button>  
                 </ng-container>
             </h3> 
         </div>
@@ -25,7 +25,8 @@
             <hr>
             <p >{{getDescription(product.description)}}</p>
             <hr>
-            <button class="btn-info btn-lg btn-block" (click)="details(product)"><i class="fas fa-info-circle"></i> Ver detalles</button>
+            <button class="btn btn-outline-info btn-lg btn-block" (click)="details(product)">
+                <i class="fas fa-info-circle"></i> Ver detalles</button>
         </div>
     </div>
 </div>
