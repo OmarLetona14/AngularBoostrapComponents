@@ -39,6 +39,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     MessageComponent,
     RegisterComponent,
     SpinnerComponent,
-    ProfileComponent
+    ProfileComponent,
+    GalleryComponent,
   ],
   imports: [
     RouterModule,

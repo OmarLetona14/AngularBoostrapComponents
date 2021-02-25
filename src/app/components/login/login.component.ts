@@ -92,16 +92,18 @@ export class LoginComponent implements OnInit {
     try {
       this.spinner.getSpinner();
       this.googleLoginService.logInWithGoogle().then((results)=>{
+        //window.location.href='/home'
+        var credentials = results.credential;
+        console.log(credentials);
         Swal.fire('Bienvenido', `<strong>
         Bienvenido ${results.user.email}
         </strong>`, 'success');
-        window.location.href='/home'
         this.spinner.stopSpinner();
         this.loginForm.reset();
       }).catch((error)=>{
         Swal.fire('Credenciales incorrectas', `<strong>
         Email o password incorrectos, por favor <br>
-        inténtelo de nuevo.
+        inténtelo de nuevo
         </strong>`, 'error');
         this.spinner.stopSpinner();
         this.loginForm.reset();

@@ -1,19 +1,19 @@
 <div class="container d-sm-block">
   <ng-container *ngIf="user==null">
-    <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify" [ngClass]="webStyle"
-    href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: fixed; right: 80px; bottom: 80px; font-size: 25px; background-color: white;color: black;">
+    <a class="btn btn-lg rounded-circle shadow-lg web" *ngIf="!verify" 
+    href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: fixed; right: 20px; bottom: 80px; font-size: 25px; background-color: white;color: black;">
       <i class="fab fa-instagram"></i>
     </a>
   </ng-container>
   <ng-container *ngIf="user == null">
-    <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify" [ngClass]="webStyle"
-    href="https://github.com/OmarLetona14" target="_blank" style="position: fixed; right: 80px; bottom: 160px; font-size: 25px; background-color: white;color: black;">
+    <a class="btn btn-lg rounded-circle shadow-lg web" *ngIf="!verify"
+    href="https://github.com/OmarLetona14" target="_blank" style="position: fixed; right: 20px; bottom: 160px; font-size: 25px; background-color: white;color: black;">
       <i class="fab fa-github"></i>
     </a>
   </ng-container>
   <ng-container *ngIf="user == null">
-    <a class="btn btn-lg rounded-circle shadow-lg" *ngIf="!verify" [ngClass]="webStyle"
-    href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: fixed; right: 80px; bottom: 240px; font-size: 25px; background-color: white;color: black;">
+    <a class="btn btn-lg rounded-circle shadow-lg web" *ngIf="!verify" 
+    href="https://www.facebook.com/omar.letona.1/" target="_blank" style="position: fixed; right: 20px; bottom: 240px; font-size: 25px; background-color: white;color: black;">
       <i class="fab fa-facebook"></i>
     </a>
   </ng-container>
@@ -33,7 +33,7 @@
   </ng-container>
   <ng-container *ngIf="user!=null">
     <a href="/editProduct" class="btn btn-lg rounded-circle shadow-lg" *ngIf="this.router.url == '/products'" [ngClass]="!verify ? webStyle : phoneStyle"
-   style="position: fixed; font-size: 25px; background-color: white;color: black;" [ngStyle]="!verify ? position_web : position_phone">
+   style="position: fixed; font-size: 25px; background-color: white;color: black;" [ngStyle]="!verify ? position_web_plus : position_phone_plus">
     <i class="fas fa-plus"></i></a>
   </ng-container>
     <a (click)="goBack()" routerLinkActive="router-link-active"  class="btn btn-lg rounded-circle shadow-lg" 

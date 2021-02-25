@@ -1,10 +1,4 @@
-*{
-	padding:0px;
-	margin:0px;
-}
-body{
-		background:white;
-	}
+
 .st0{font-family:'FootlightMTLight';}
 .st1{font-size:83.0285px;}
 .st2{fill:gray;}
@@ -13,26 +7,26 @@ svg{
   width: 500px;
     height: 400px;
     text-align: center;
-    fill: #16a085;
+    fill: #ECA210;
 }
 path#XMLID_5_ {
    
-    fill: #16a085;
+    fill: #ECA210;
     filter: url(#blurFilter4);
 }
 path#XMLID_11_ ,path#XMLID_2_ {
-    fill: #16a085;
+    fill: #ECA210;
 }
 .circle{
   animation: out 2s infinite ease-out;
-  fill: #16a085;
+  fill: #ECA210;
 }
 
 #container{
   text-align:center;
 }
 .message{
-    color:#16a085;
+    color:#ECA210;
     font-size: 65px;
     margin: 0px;
 }
@@ -46,7 +40,7 @@ path#XMLID_11_ ,path#XMLID_2_ {
 
 .message:after, .message:before {
     font-size: 75px;
-  color: #16a085;
+  color: #ECA210;
   -webkit-animation-name: opacity;
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;

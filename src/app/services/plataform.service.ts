@@ -9,13 +9,11 @@ export class PlataformService {
 
   isMobile(){
     const userAgent = window.navigator.userAgent;
-    console.log(userAgent);
     const pLeft = userAgent.indexOf('(');
     const pRight = userAgent.indexOf(')', pLeft);
     const os = userAgent.substring(pLeft, pRight);
-    console.log(os);
-    if(os.includes('Android') || 'iPhone' || 'iPad'){
-      console.log('Mobile');
+    if(os.includes('Android') || os.includes('iPhone') 
+    || os.includes('iPad')){
       return true
     }
   }

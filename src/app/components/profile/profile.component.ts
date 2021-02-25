@@ -10,24 +10,25 @@ import Swal from 'sweetalert2'
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
+  userProfile:any = {};
   user:any = {}
   private emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-  public userForm: FormGroup;  
+  public userForm : FormGroup;  
   noProfile: 'https://www.kindpng.com/picc/m/22-223965_no-profile-picture-icon-circle-member-icon-png.png'
   constructor(private fb:FormBuilder, private userService:GoogleAuthenticationService, private spinner:SpinnerService) { 
     this.spinner.getSpinner();
     this.userService.getCurrentUser()
     .then((results)=>{
-      this.user = results;
       this.userForm.patchValue(this.user);
+      this.userProfile = results.providerData;
+      console.log(results); 
       this.spinner.stopSpinner();
     });
   }
 
   ngOnInit(): void {
     this.initForm();
-    
+     
   }
 
   async onSaveData():Promise<void>{
